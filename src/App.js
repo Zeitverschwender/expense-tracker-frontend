@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import Home from './containers/home/Home';
+
+import logo from './assets/images/icon.svg';
+import github from './assets/images/iconmonstr-github-1.svg';
+import styles from './App.module.scss';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className={styles.app}>
+      <header className={styles.appHeader}>
+        <h1>Expense Tracker</h1>
       </header>
+      <Home/>
+      <footer className={styles.appFooter}>
+
+      <img className={styles.github} src={github} alt="Github Logo"/>
+      </footer>
     </div>
   );
 }
