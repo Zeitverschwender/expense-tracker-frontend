@@ -29,6 +29,8 @@ const ExpenseCard = (props) => {
   );
 };
 
-ExpenseCard.propTypes = {};
+ExpenseCard.propTypes = {
+  expense: PropTypes.object.isRequired,
+};
 
 export default ExpenseCard;
