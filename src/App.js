@@ -1,8 +1,8 @@
-import Home from './containers/home/Home';
+import Home from "./containers/home/Home";
 
-import logo from './assets/images/icon.svg';
-import github from './assets/images/iconmonstr-github-1.svg';
-import styles from './App.module.scss';
+import logo from "./assets/images/icon.svg";
+import github from "./assets/images/iconmonstr-github-1.svg";
+import styles from "./App.module.scss";
 
 function App() {
   return (
@@ -11,10 +11,9 @@ function App() {
         <span className={"material-icons " + styles.sidemenuButton}>menu</span>
         <h1>EXPENSE TRACKER</h1>
       </header>
-      <Home/>
+      <Home />
       <footer className={styles.appFooter}>
-
-      <img className={styles.github} src={github} alt="Github Logo"/>
+        <img className={styles.github} src={github} alt="Github Logo" />
       </footer>
     </div>
   );
