@@ -12,7 +12,14 @@ function App() {
       </header>
       <Home />
       <footer className={styles.appFooter}>
-        <img className={styles.github} src={github} alt="Github Logo" />
+        <a
+          href="https://github.com/Zeitverschwender/expense-tracker-frontend"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.github}
+        >
+          <img src={github} alt="Github Logo" />
+        </a>
       </footer>
     </div>
   );
