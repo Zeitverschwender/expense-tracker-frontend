@@ -8,7 +8,7 @@ const ExpenseCardsContainer = props => {
             "id": "1",
             "date": "12/12",
             "note": "note1",
-            "category": "cat1",
+            "category": "food   ",
             "paymentType": "card1",
             "amount": 10000
         },
