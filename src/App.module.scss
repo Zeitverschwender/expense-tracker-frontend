@@ -8,8 +8,6 @@ $colors: (
   black: #444546,
 );
 
-$box-shadow: 6px 9px 1em -0.3em black;
-
 $font-main: "Roboto", sans-serif;
 $font-mono: "Roboto Mono", sans-serif;
 
@@ -45,13 +43,37 @@ body {
   flex-direction: column;
 }
 
-.appHeader{
+.appHeader {
   width: 100%;
-  background: rgba(black, 0.15);
 
-  box-shadow: $box-shadow;
+  background: rgba(black, 0.26);
+
+  box-shadow: 0px 6px 0.8em -0.35em black;
+
+  position: relative;
+
+  h1 {
+    text-align: center;
+    letter-spacing: 0.15em;
+
+    font-size: 1.75rem;
+
+    margin: 0.5em 0;
+  }
 }
-.appFooter{
+
+.sidemenuButton {
+  position: absolute;
+  left: 0.25em;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  font-size: 3rem;
+
+  cursor: pointer;
+}
+.appFooter {
   margin-top: auto;
   width: 100%;
 

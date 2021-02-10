@@ -8,7 +8,8 @@ function App() {
   return (
     <div className={styles.app}>
       <header className={styles.appHeader}>
-        <h1>Expense Tracker</h1>
+        <span className={"material-icons " + styles.sidemenuButton}>menu</span>
+        <h1>EXPENSE TRACKER</h1>
       </header>
       <Home/>
       <footer className={styles.appFooter}>
