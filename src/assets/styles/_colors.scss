@@ -3,3 +3,7 @@ $colors: (
   white: #F5F5F5,
   black: #444546,
 );
+
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
