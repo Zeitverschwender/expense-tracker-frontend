@@ -28,6 +28,11 @@ body {
   color: color(white);
 
   font-family: $font-main;
+
+  background-image: url("./assets/images/background.svg");
+  background-position: center center;
+
+  background-size: 7.5em;
 }
 
 .material-icons {
