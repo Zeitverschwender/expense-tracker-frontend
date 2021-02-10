@@ -10,7 +10,7 @@ const Home = (props) => {
   return (
     <React.Fragment>
       <div className={styles.fab}>
-        <Fab color="secondary" size="large" aria-label="add">
+        <Fab color="secondary" size="large" aria-label="add expense">
           <AddIcon />
         </Fab>
       </div>
