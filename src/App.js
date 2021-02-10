@@ -1,6 +1,5 @@
 import Home from "./containers/home/Home";
 
-import logo from "./assets/images/icon.svg";
 import github from "./assets/images/iconmonstr-github-1.svg";
 import styles from "./App.module.scss";
 
