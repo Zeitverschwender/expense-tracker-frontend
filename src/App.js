@@ -1,19 +1,25 @@
-import Home from './containers/home/Home';
+import Home from "./containers/home/Home";
 
-import logo from './assets/images/icon.svg';
-import github from './assets/images/iconmonstr-github-1.svg';
-import styles from './App.module.scss';
+import github from "./assets/images/iconmonstr-github-1.svg";
+import styles from "./App.module.scss";
 
 function App() {
   return (
     <div className={styles.app}>
       <header className={styles.appHeader}>
-        <h1>Expense Tracker</h1>
+        <span className={"material-icons " + styles.sidemenuButton}>menu</span>
+        <h1>EXPENSE TRACKER</h1>
       </header>
-      <Home/>
+      <Home />
       <footer className={styles.appFooter}>
-
-      <img className={styles.github} src={github} alt="Github Logo"/>
+        <a
+          href="https://github.com/Zeitverschwender/expense-tracker-frontend"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.github}
+        >
+          <img src={github} alt="Github Logo" />
+        </a>
       </footer>
     </div>
   );
