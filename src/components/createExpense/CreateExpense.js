@@ -1,5 +1,5 @@
+import React, { useState} from "react";
 import { InputAdornment, TextField } from "@material-ui/core";
-import React from "react";
 
 import styles from "./CreateExpense.module.scss";
 
