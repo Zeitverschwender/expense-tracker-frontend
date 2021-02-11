@@ -1,5 +1,6 @@
 @import "../../../assets/styles/colors";
-@import "../../../assets/styles/_constants.scss";
+@import "../../../assets/styles/constants";
+@import "../../../assets/styles/common";
 @import "../../../assets/styles/mixin";
 
 $transition-time: 0.2s;
@@ -7,17 +8,12 @@ $transition-time: 0.2s;
 $circle-width: 10em;
 
 .card {
+  @extend .expenseBaseCard;
+
   position: relative;
 
   display: flex;
   flex-direction: column;
-  padding: 0.5em 0.85em;
-
-  background-color: color(white);
-  color: color(black);
-
-  border-radius: 4px;
-  box-shadow: 5px 7px 1em -0.45em black;
 
   transition: transform $transition-time;
 

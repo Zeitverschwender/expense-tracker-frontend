@@ -1,0 +1,11 @@
+@import "../../assets/styles/colors";
+@import "../../assets/styles/common";
+
+.wrapper {
+  @extend .expenseBaseCard;
+
+  display: flex;
+  flex-direction: column;
+
+  padding-top: 1em;
+}

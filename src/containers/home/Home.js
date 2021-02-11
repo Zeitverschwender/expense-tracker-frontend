@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Fab } from "@material-ui/core";
 
@@ -8,17 +8,30 @@ import ExpenseListHeader from "../../components/expenseCardsContainer/expenseLis
 import AddIcon from "@material-ui/icons/Add";
 
 import Styles from "./Home.module.scss";
+import CreateExpense from "../../components/createExpense/CreateExpense";
 
 const Home = (props) => {
+  const [isCreateShown, setIsCreateShown] = useState(false);
+
+  const showCreate = (e) => {
+    e.preventDefault();
+    setIsCreateShown(true);
+  };
   return (
     <React.Fragment>
       <div className={Styles.fab}>
-        <Fab color="secondary" size="large" aria-label="add expense">
+        <Fab
+          color="secondary"
+          size="large"
+          aria-label="add expense"
+          onClick={showCreate}
+        >
           <AddIcon />
         </Fab>
       </div>
       <section className={Styles.expenseCardsContainer}>
-        <ExpenseListHeader />
+        <ExpenseListHeader showCreate={showCreate} />
+        {isCreateShown && <CreateExpense />}
         <ExpenseCardsContainer></ExpenseCardsContainer>
       </section>
     </React.Fragment>

@@ -22,7 +22,11 @@ function ExpenseListHeader(props) {
             filter_alt
           </span>
         </IconButton>
-        <IconButton aria-label="add" color="secondary">
+        <IconButton
+          aria-label="add"
+          color="secondary"
+          onClick={props.showCreate}
+        >
           <AddIcon fontSize="large" />
         </IconButton>
         <IconButton aria-label="search" color="secondary">
@@ -33,6 +37,8 @@ function ExpenseListHeader(props) {
   );
 }
 
-ExpenseListHeader.propTypes = {};
+ExpenseListHeader.propTypes = {
+  showCreate: PropTypes.func.isRequired,
+};
 
 export default ExpenseListHeader;
