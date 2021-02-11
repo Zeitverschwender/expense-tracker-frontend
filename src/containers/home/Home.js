@@ -23,6 +23,11 @@ const Home = (props) => {
       createExpenseRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
+  const hideCreate = (e) => {
+    e.preventDefault();
+
+    setIsCreateShown(false);
+  };
   return (
     <React.Fragment>
       <div className={Styles.fab}>
@@ -37,7 +42,9 @@ const Home = (props) => {
       </div>
       <section className={Styles.expenseCardsContainer}>
         <ExpenseListHeader showCreate={showCreate} />
-        {isCreateShown && <CreateExpense ref={createExpenseRef} />}
+        {isCreateShown && (
+          <CreateExpense ref={createExpenseRef} close={hideCreate} />
+        )}
         <ExpenseCardsContainer></ExpenseCardsContainer>
       </section>
     </React.Fragment>

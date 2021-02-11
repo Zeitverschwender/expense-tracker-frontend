@@ -8,6 +8,15 @@
   flex-direction: column;
 }
 
-.gap{
+.gap {
   margin-bottom: 1em !important;
+}
+
+.moreInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonGroup {
+  align-self: flex-end;
 }
