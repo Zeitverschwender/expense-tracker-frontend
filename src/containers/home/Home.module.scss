@@ -1,9 +1,11 @@
 @import "../../assets/styles/colors";
 
 .fab {
-  position: absolute;
+  position: fixed;
   bottom: 3.5em;
   right: 1em;
+
+  z-index: 1;
 
   svg {
     fill: color(white);
