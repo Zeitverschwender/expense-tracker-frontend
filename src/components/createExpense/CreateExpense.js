@@ -3,9 +3,10 @@ import React from "react";
 
 import styles from "./CreateExpense.module.scss";
 
-export default function CreateExpense() {
+const CreateExpense = React.forwardRef((props, ref) => {
+  const [date, setDate] = useState(new Date());
   return (
-    <form className={styles.wrapper}>
+    <form className={styles.wrapper} autoComplete="off" ref={ref}>
       <TextField
         required
         error={false}
@@ -22,4 +23,6 @@ export default function CreateExpense() {
       />
     </form>
   );
-}
+});
+
+export default CreateExpense;

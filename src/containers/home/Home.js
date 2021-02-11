@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { Fab } from "@material-ui/core";
 
@@ -12,10 +12,16 @@ import CreateExpense from "../../components/createExpense/CreateExpense";
 
 const Home = (props) => {
   const [isCreateShown, setIsCreateShown] = useState(false);
+  const createExpenseRef = useRef(null);
 
   const showCreate = (e) => {
     e.preventDefault();
+
     setIsCreateShown(true);
+
+    if (createExpenseRef.current) {
+      createExpenseRef.current.scrollIntoView({ behavior: "smooth" });
+    }
   };
   return (
     <React.Fragment>
@@ -31,7 +37,7 @@ const Home = (props) => {
       </div>
       <section className={Styles.expenseCardsContainer}>
         <ExpenseListHeader showCreate={showCreate} />
-        {isCreateShown && <CreateExpense />}
+        {isCreateShown && <CreateExpense ref={createExpenseRef} />}
         <ExpenseCardsContainer></ExpenseCardsContainer>
       </section>
     </React.Fragment>
