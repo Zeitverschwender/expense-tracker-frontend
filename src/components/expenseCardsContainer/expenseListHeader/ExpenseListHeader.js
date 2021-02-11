@@ -14,22 +14,35 @@ function ExpenseListHeader(props) {
     <div className={Styles.expensesHeader}>
       <h2>Expenses</h2>
       <div className={Styles.headerIcons}>
-        <IconButton aria-label="sort" color="secondary">
+        <IconButton
+          aria-label="sort"
+          classes={{ root: Styles.icons }}
+          color="inherit"
+        >
           <SortIcon fontSize="large" />
         </IconButton>
-        <IconButton aria-label="filter" color="secondary">
-          <span className="material-icons" style={{ fontSize: "2rem" }}>
+        <IconButton
+          aria-label="filter"
+          classes={{ root: Styles.icons }}
+          color="inherit"
+        >
+          <span className="material-icons " style={{ fontSize: "2rem" }}>
             filter_alt
           </span>
         </IconButton>
         <IconButton
           aria-label="add"
-          color="secondary"
           onClick={props.showCreate}
+          classes={{ root: Styles.icons }}
+          color="inherit"
         >
           <AddIcon fontSize="large" />
         </IconButton>
-        <IconButton aria-label="search" color="secondary">
+        <IconButton
+          aria-label="search"
+          classes={{ root: Styles.icons }}
+          color="inherit"
+        >
           <SearchSharpIcon fontSize="large" />
         </IconButton>
       </div>

@@ -1,3 +1,5 @@
+@import "../../../assets/styles/colors";
+
 .expensesHeader {
   margin-top: 2em;
 
@@ -14,5 +16,12 @@
 
   .headerIcons {
     margin-left: auto;
+  }
+}
+
+.icons {
+  color: color(white);
+  &:hover {
+    color: color(accent);
   }
 }
