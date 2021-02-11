@@ -11,5 +11,3 @@ export {
     removeExpense,
     updateExpense
 } from './expense';
-
-export { } from './order';

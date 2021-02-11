@@ -1,7 +1,7 @@
 import * as actionTypes from '../actionTypes';
 import axios from '../../axios';
 
-EXPENSES_ENDPOINT = 'expenses/'
+const EXPENSES_ENDPOINT = 'expenses/'
 
 export const setExpenses = ( expenses ) => {
     return {
@@ -34,7 +34,7 @@ export const getAllExpenses = () => {
 };
 
 export const addExpense = ( expense ) => {
-    success_action = {
+    const success_action = {
         type: actionTypes.ADD_EXPENSE,
         expense: expense
     };
@@ -54,12 +54,12 @@ export const addExpense = ( expense ) => {
 };
 
 export const updateExpense = ( expense ) => {
-    success_action = {
+    const success_action = {
         type: actionTypes.UPDATE_EXPENSES
     };
 
     return dispatch => {
-        axios.patch( UPDATE_EXPENSES)
+        axios.patch( EXPENSES_ENDPOINT + expense._id)
             .then( response => {
                 dispatch({
                     ...success_action,
@@ -76,7 +76,7 @@ export const updateExpense = ( expense ) => {
 };
 
 export const removeExpense = ( expenseId ) => {
-    success_action = {
+    const success_action = {
         type: actionTypes.REMOVE_EXPENSE,
         expenseId: expenseId
     };

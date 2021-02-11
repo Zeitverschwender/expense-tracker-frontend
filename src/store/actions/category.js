@@ -1,8 +1,7 @@
 import * as actionTypes from '../actionTypes';
 import axios from '../../axios';
-import category from '../../../../expense-tracker-backend/db/models/category';
 
-CATEGORIES_ENDPOINT = 'categories/'
+const CATEGORIES_ENDPOINT = 'categories/'
 // todo implement these stuff
 export const addCategory = ( expense ) => {
     return {
@@ -44,7 +43,7 @@ export const getAllCategories = () => {
                 dispatch(setCategories(response.data));
             } )
             .catch( error => {
-                dispatch(fetchIngredientsFailed());
+                dispatch(fetchCategoriesFailed());
             } );
     };
 };

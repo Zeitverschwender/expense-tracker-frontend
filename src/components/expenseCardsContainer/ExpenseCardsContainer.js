@@ -1,29 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import ExpenseCard from './expenseCard/ExpenseCard'
+import * as actions from '../../store/actions/index';
 // import PropTypes from 'prop-types'
 
 const ExpenseCardsContainer = props => {
-    const [expenses, setExpenses] = useState([
-        {
-            "id": "1",
-            "date": "12/12",
-            "note": "note1",
-            "category": "food   ",
-            "paymentType": "card1",
-            "amount": 10000
-        },
-        {
-            "id": "2",
-            "date": "13/13",
-            "note": "note2",
-            "category": "cat2",
-            "paymentType": "card2",
-            "amount": 20000
-        },
-        
-    ])
+    // todo for sorting and filtering use local state
+    // const [expenses, setExpenses] = useState([])
 
-    const expenseCards = expenses.map(expense => <ExpenseCard key={expense.id} expense={expense}></ExpenseCard>)
+    const dispatch = useDispatch();
+
+    const expenses = useSelector(state => state.expenses.expenses);
+    const hasError = useSelector(state => state.expenses.hasError);
+    const error = useSelector(state => state.expenses.error);
+    const errorDescription = useSelector(state => state.expenses.errorDescription);
+
+    const onGetAllExpenses = useCallback(() => dispatch(actions.getAllExpenses()), []);
+    useEffect(() => {
+        onGetAllExpenses()
+    }, [onGetAllExpenses])
+
+    const expenseCards = expenses.map(expense => <ExpenseCard key={expense._id} expense={expense}></ExpenseCard>)
 
     return (
         <div>
