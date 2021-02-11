@@ -1,5 +1,6 @@
 @import "../../../assets/styles/colors";
 @import "../../../assets/styles/_constants.scss";
+@import "../../../assets/styles/mixin";
 
 $transition-time: 0.2s;
 
@@ -47,12 +48,7 @@ $circle-width: 10em;
   display: flex;
   align-items: center;
 
-  & > * {
-    margin-right: 0.3em;
-  }
-  & > *:last-child {
-    margin-right: 0;
-  }
+  @include gap(0.3, right);
 }
 
 .category {

@@ -1,0 +1,8 @@
+@mixin gap($amount, $direction: bottom) {
+  & > * {
+    margin-#{$direction}: #{$amount}em;
+  }
+  & > *:last-child {
+    margin-#{$direction}: 0;
+  }
+}

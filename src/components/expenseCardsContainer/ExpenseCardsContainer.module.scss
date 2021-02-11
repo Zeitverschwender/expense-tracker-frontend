@@ -1,10 +1,7 @@
+@import "../../assets/styles/mixin";
+
 .expensesCardsList {
   margin-top: 1em;
 
-  & > * {
-    margin-bottom: 1em;
-  }
-  & > *:last-child {
-    margin-bottom: 0;
-  }
+  @include gap(1);
 }
