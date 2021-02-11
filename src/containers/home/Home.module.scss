@@ -1,9 +1,14 @@
 .fab {
-    position: absolute;
-    bottom: 3.5em;
-    right: 1em;
+  position: absolute;
+  bottom: 3.5em;
+  right: 1em;
 
-    svg{
-        fill: white;
-    }
+  svg {
+    fill: white;
+  }
+}
+
+.expenseCardsContainer {
+  width: 85%;
+  margin: 0 auto;
 }

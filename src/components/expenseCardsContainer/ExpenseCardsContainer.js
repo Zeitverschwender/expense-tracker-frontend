@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ExpenseCard from "./expenseCard/ExpenseCard";
-// import PropTypes from 'prop-types'
+
+import Styles from "./ExpenseCardsContainer.module.scss";
 
 const ExpenseCardsContainer = (props) => {
   const [expenses, setExpenses] = useState([
@@ -9,28 +10,25 @@ const ExpenseCardsContainer = (props) => {
       date: "12/12",
       note: "note1",
       category: "food   ",
-      paymentType: "card1",
+      paymentType: "Cash",
       amount: 10000,
     },
     {
       id: "2",
       date: "13/13",
-      note: "note2",
-      category: "cat2",
-      paymentType: "card2",
+      category: "not food",
+      paymentType: "qweasd",
       amount: 20000,
     },
   ]);
 
-  const expenseCards = expenses.map((expense) => (
-    <ExpenseCard key={expense.id} expense={expense}></ExpenseCard>
-  ));
-
-  return <div>{expenseCards}</div>;
+  return (
+    <div className={Styles.expensesCardsList}>
+      {expenses.map((expense) => (
+        <ExpenseCard key={expense.id} expense={expense}></ExpenseCard>
+      ))}
+    </div>
+  );
 };
-
-// ExpenseCardsContainer.propTypes = {
-
-// }
 
 export default ExpenseCardsContainer;
