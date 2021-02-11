@@ -20,6 +20,7 @@ const CreateExpense = React.forwardRef((props, ref) => {
         label="Amount"
         variant="outlined"
         autoFocus
+        margin="dense"
       />
     </form>
   );
