@@ -73,6 +73,8 @@ $circle-width: 10em;
   justify-content: center;
 
   font-family: $font-mono;
+  font-size: 0.93rem;
+  padding-bottom: 0.2em;
 
   transition: width $transition-time;
 }
