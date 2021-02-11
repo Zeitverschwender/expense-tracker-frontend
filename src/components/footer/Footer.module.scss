@@ -1,0 +1,18 @@
+.appFooter {
+    margin-top: auto;
+  
+    background: rgba(black, 0.26);
+  
+    padding: 0 0.25em;
+    padding-top: 0.4em;
+  
+    display: flex;
+  
+    .github {
+      margin-left: auto;
+      img {
+        width: 2em;
+      }
+    }
+  }
+  
