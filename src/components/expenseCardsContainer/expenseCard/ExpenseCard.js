@@ -8,7 +8,6 @@ import dollar from "../../../assets/images/dollar.svg";
 
 const ExpenseCard = (props) => {
   const time = DateTime.fromISO(props.expense.date).toFormat('dd/LL');
-  console.log(props)
   return (
     <div className={styles.card}>
       <div className={styles.firstRow}>
