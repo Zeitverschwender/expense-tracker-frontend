@@ -2,6 +2,8 @@ import {
   InputAdornment,
   TextField,
 } from "@material-ui/core";
+import { MuiPickersUtilsProvider, DateTimePicker } from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns";
 import React, { useState } from "react";
 
 import styles from "./CreateExpense.module.scss";
@@ -36,6 +38,18 @@ const CreateExpense = React.forwardRef((props, ref) => {
         margin="dense"
         onChange={onAmountChange}
       />
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <DateTimePicker
+          label="When"
+          classes={{ root: styles.gap }}
+          inputVariant="outlined"
+          value={date}
+          onChange={setDate}
+          showTodayButton
+          disableFuture
+          autoOk
+        />
+      </MuiPickersUtilsProvider>
     </form>
   );
 });
