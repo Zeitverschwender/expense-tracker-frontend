@@ -70,6 +70,7 @@ const CreateExpense = React.forwardRef((props, ref) => {
             showTodayButton
             disableFuture
             autoOk
+            required
           />
         </MuiPickersUtilsProvider>
         <FormControl
