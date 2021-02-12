@@ -10,6 +10,7 @@ import PaymentMethodRadio from "./formControls/paymentMethodRadio/PaymentMethodR
 import ActionsButtonGroup from "./formControls/actionsButtonGroup/ActionsButtonGroup";
 import CategorySelect from "./formControls/categorySelect/CategorySelect";
 import MiniInfo from "./miniInfo/MiniInfo";
+import NoteTextfield from "./formControls/noteTextfield/NoteTextfield";
 
 const defaultPaymentMethod = PaymentMethod.CASH;
 
@@ -18,6 +19,7 @@ const CreateExpense = React.forwardRef((props, ref) => {
   const [amount, setAmount] = useState(0);
   const [paymentMethod, setPaymentMethod] = useState(defaultPaymentMethod);
   const [category, setCategory] = useState("");
+  const [note, setNote] = useState("");
 
   const [isMoreInfoShown, setIsMoreInfoShown] = useState(false);
 
@@ -43,6 +45,7 @@ const CreateExpense = React.forwardRef((props, ref) => {
           setPaymentMethod={setPaymentMethod}
           gapClassname={styles.gap}
         />
+        <NoteTextfield setNote={setNote} gapClassname={styles.gap} />
       </div>
       <ActionsButtonGroup
         onCreate={() => {}}
