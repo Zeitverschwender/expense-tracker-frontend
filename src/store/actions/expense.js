@@ -40,7 +40,7 @@ export const addExpense = ( expense ) => {
     };
 
     return dispatch => {
-        axios.post( EXPENSES_ENDPOINT)
+        axios.post( EXPENSES_ENDPOINT, expense)
             .then( response => {
                 dispatch(success_action);
             } )
@@ -59,7 +59,7 @@ export const updateExpense = ( expense ) => {
     };
 
     return dispatch => {
-        axios.patch( EXPENSES_ENDPOINT + expense._id)
+        axios.patch( EXPENSES_ENDPOINT + expense._id, expense)
             .then( response => {
                 dispatch({
                     ...success_action,
