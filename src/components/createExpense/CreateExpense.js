@@ -1,13 +1,5 @@
-import {
-  Button,
-  ButtonGroup,
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Radio,
-  RadioGroup,
-} from "@material-ui/core";
-import CreditCardIcon from "@material-ui/icons/CreditCard";
+import { Button, ButtonGroup } from "@material-ui/core";
+
 import CloseSharpIcon from "@material-ui/icons/CloseSharp";
 import ExpandMoreOutlinedIcon from "@material-ui/icons/ExpandMoreOutlined";
 import ExpandLessOutlinedIcon from "@material-ui/icons/ExpandLessOutlined";
@@ -17,15 +9,16 @@ import PropTypes from "prop-types";
 import styles from "./CreateExpense.module.scss";
 import PaymentMethod from "../../models/PaymentType";
 
-import dollar from "../../../src/assets/images/dollar.svg";
-import dollarOrange from "../../../src/assets/images/dollar_orange.svg";
 import AmountTextfield from "./formControls/amountTextfield/AmountTextfield";
 import DatePicker from "./formControls/datePicker/DatePicker";
+import PaymentMethodRadio from "./formControls/paymentMethodRadio/PaymentMethodRadio";
+
+const defaultPaymentMethod = PaymentMethod.CASH;
 
 const CreateExpense = React.forwardRef((props, ref) => {
   const [date, setDate] = useState(new Date());
   const [amount, setAmount] = useState(0);
-  const [paymentMethod, setPaymentMethod] = useState(PaymentMethod.CASH);
+  const [paymentMethod, setPaymentMethod] = useState(defaultPaymentMethod);
 
   const [isMoreInfoShown, setIsMoreInfoShown] = useState(false);
 
@@ -37,45 +30,13 @@ const CreateExpense = React.forwardRef((props, ref) => {
         className={styles.moreInfo}
       >
         <DatePicker date={date} setDate={setDate} gapClassname={styles.gap} />
-        <FormControl
-          component="fieldset"
-          required
-          classes={{ root: styles.radioGroup }}
-        >
-          <FormLabel classes={{ root: styles.hGap }}>Payment Method</FormLabel>
-          <RadioGroup
-            row
-            aria-label="Payment Method"
-            name="PaymentMethod"
-            defaultValue={paymentMethod}
-            onChange={(e) => setPaymentMethod(e.target.value)}
-          >
-            <FormControlLabel
-              value={PaymentMethod.CASH}
-              control={
-                <Radio
-                  color="primary"
-                  icon={
-                    <img src={dollar} alt="dollar" style={{ opacity: 0.55 }} />
-                  }
-                  checkedIcon={<img src={dollarOrange} alt="dollar orange" />}
-                />
-              }
-              labelPlacement="end"
-            />
-            <FormControlLabel
-              value={PaymentMethod.CREDIT}
-              control={
-                <Radio
-                  color="primary"
-                  icon={<CreditCardIcon />}
-                  checkedIcon={<CreditCardIcon color="primary" />}
-                />
-              }
-              labelPlacement="end"
-            />
-          </RadioGroup>
-        </FormControl>
+
+        <PaymentMethodRadio
+          paymentMethod={paymentMethod}
+          defaultValue={defaultPaymentMethod}
+          setPaymentMethod={setPaymentMethod}
+          gapClassname={styles.gap}
+        />
       </div>
       <ButtonGroup
         classes={{ root: styles.buttonGroup }}

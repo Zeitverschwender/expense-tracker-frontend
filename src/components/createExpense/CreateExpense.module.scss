@@ -11,20 +11,10 @@
 .gap {
   margin-bottom: 1em !important;
 }
-.hGap {
-  margin-right: 1.4em !important;
-}
 
 .moreInfo {
   display: flex;
   flex-direction: column;
-}
-
-.radioGroup {
-  @extend .gap;
-
-  flex-direction: row !important;
-  align-items: center;
 }
 
 .buttonGroup {
