@@ -23,7 +23,7 @@ function PaymentMethodRadio(props) {
       required
       classes={{ root: `${props.gapClassname} ${styles.radioGroup}` }}
     >
-      <FormLabel classes={{ root: styles.hGap }}>Payment Method</FormLabel>
+      <FormLabel classes={{ root: styles.hGap }}>Payment Method:</FormLabel>
       <RadioGroup
         row
         aria-label="Payment Method"
