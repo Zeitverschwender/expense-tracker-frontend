@@ -25,7 +25,7 @@ const App = props => {
   let routes = (
     <Switch>
       <Route path="/categories" component={Categories} />
-      <Route path="/graphs" render={Graphs} />
+      <Route path="/graphs" component={Graphs} />
       <Route path="/expenses" component={Home} />
       <Route exact path="/" component={Home} />
       <Redirect to="/expenses" />
