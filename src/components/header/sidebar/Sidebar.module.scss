@@ -1,0 +1,35 @@
+.sidemenuButton {
+    position: absolute;
+    left: 0.25em;
+    top: 50%;
+  
+    transform: translateY(-50%);
+  
+    font-size: 3rem;
+    flex: 1;
+    cursor: pointer;
+}
+
+.hide {
+  display: 'none',
+}
+
+.drawer, .drawerPaper {
+  width: 45%;
+}
+
+.drawerPaper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.collapseButton {
+  margin-left: auto;
+  max-width: fit-content;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+}
