@@ -23,7 +23,7 @@ const reducer = ( state = initialState, action ) => {
         case actionTypes.REMOVE_CATEGORY:
             return {
                 ...state,
-                categories: categories.filter(categories => categories._id != action.categoryId),
+                categories: state.categories.filter(categories => categories._id != action.categoryId),
                 ...setNoError()
             };
 

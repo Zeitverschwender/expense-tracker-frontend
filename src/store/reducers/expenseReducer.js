@@ -23,7 +23,7 @@ const reducer = ( state = initialState, action ) => {
         case actionTypes.REMOVE_EXPENSE:
             return {
                 ...state,
-                expenses: expenses.filter(expense => expense._id != action.expenseId),
+                expenses: state.expenses.filter(expense => expense._id != action.expenseId),
                 ...setNoError()
             };
 
