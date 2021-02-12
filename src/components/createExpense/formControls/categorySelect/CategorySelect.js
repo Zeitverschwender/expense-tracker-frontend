@@ -1,44 +1,24 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { TextField } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 import { createFilterOptions } from "@material-ui/lab/Autocomplete";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllCategories } from "../../../../store/actions/index";
 
 const filter = createFilterOptions();
-
-const temp = [
-  {
-    title: "Category 1",
-    someOther: "Field",
-  },
-  {
-    title: "Category 2",
-    someOther: "Field",
-  },
-  {
-    title: "Category 3",
-    someOther: "Field",
-  },
-  {
-    title: "Category 4",
-    someOther: "Field",
-  },
-  {
-    title: "Category 5",
-    someOther: "Field",
-  },
-  {
-    title: "Category 6",
-    someOther: "Field",
-  },
-  {
-    title: "Category 7",
-    someOther: "Field",
-  },
-];
-
 function CategorySelect(props) {
   const [value, setValue] = useState("");
+
+  const categories = useSelector((state) => state.categories.categories);
+  const dispatch = useDispatch();
+  const onGetAllCategories = useCallback(
+    () => dispatch(getAllCategories()),
+    []
+  );
+  useEffect(() => {
+    onGetAllCategories();
+  }, [onGetAllCategories]);
 
   const onChange = (event, newValue) => {
     if (typeof newValue === "string") {
@@ -63,7 +43,7 @@ function CategorySelect(props) {
   return (
     <Autocomplete
       id="category-select"
-      options={temp}
+      options={categories}
       classes={{ root: props.gapClassname }}
       renderInput={(params) => (
         <TextField {...params} label="Category" variant="outlined" />
