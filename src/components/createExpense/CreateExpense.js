@@ -1,8 +1,3 @@
-import { Button, ButtonGroup } from "@material-ui/core";
-
-import CloseSharpIcon from "@material-ui/icons/CloseSharp";
-import ExpandMoreOutlinedIcon from "@material-ui/icons/ExpandMoreOutlined";
-import ExpandLessOutlinedIcon from "@material-ui/icons/ExpandLessOutlined";
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
@@ -12,6 +7,7 @@ import PaymentMethod from "../../models/PaymentType";
 import AmountTextfield from "./formControls/amountTextfield/AmountTextfield";
 import DatePicker from "./formControls/datePicker/DatePicker";
 import PaymentMethodRadio from "./formControls/paymentMethodRadio/PaymentMethodRadio";
+import ActionsButtonGroup from "./formControls/actionsButtonGroup/ActionsButtonGroup";
 
 const defaultPaymentMethod = PaymentMethod.CASH;
 
@@ -38,26 +34,13 @@ const CreateExpense = React.forwardRef((props, ref) => {
           gapClassname={styles.gap}
         />
       </div>
-      <ButtonGroup
-        classes={{ root: styles.buttonGroup }}
-        color="primary"
-        aria-label="create expense button group"
-      >
-        <Button aria-label="Create">Create</Button>
-        <Button
-          aria-label="More Info"
-          onClick={() => setIsMoreInfoShown(!isMoreInfoShown)}
-        >
-          {isMoreInfoShown ? (
-            <ExpandLessOutlinedIcon />
-          ) : (
-            <ExpandMoreOutlinedIcon />
-          )}
-        </Button>
-        <Button aria-label="Close" onClick={props.close}>
-          <CloseSharpIcon />
-        </Button>
-      </ButtonGroup>
+      <ActionsButtonGroup
+        onCreate={() => {}}
+        isMoreInfoShown={isMoreInfoShown}
+        setIsMoreInfoShown={setIsMoreInfoShown}
+        buttonGroupClassname={styles.buttonGroup}
+        close={props.close}
+      />
     </form>
   );
 });
