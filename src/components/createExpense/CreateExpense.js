@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useState} from "react";
+import React, { useState } from "react";
 
 import styles from "./CreateExpense.module.scss";
 import PaymentMethod from "../../models/PaymentType";
@@ -9,6 +9,7 @@ import DatePicker from "./formControls/datePicker/DatePicker";
 import PaymentMethodRadio from "./formControls/paymentMethodRadio/PaymentMethodRadio";
 import ActionsButtonGroup from "./formControls/actionsButtonGroup/ActionsButtonGroup";
 import CategorySelect from "./formControls/categorySelect/CategorySelect";
+import MiniInfo from "./miniInfo/MiniInfo";
 
 const defaultPaymentMethod = PaymentMethod.CASH;
 
@@ -24,6 +25,12 @@ const CreateExpense = React.forwardRef((props, ref) => {
     <form className={styles.wrapper} autoComplete="off" ref={ref}>
       <AmountTextfield setAmount={setAmount} gapClassname={styles.gap} />
       <CategorySelect setCategory={setCategory} gapClassname={styles.gap} />
+      <MiniInfo
+        isShown={isMoreInfoShown}
+        date={date}
+        paymentMethod={paymentMethod}
+        gapClassname={styles.gap}
+      />
       <div
         style={{ display: isMoreInfoShown ? "" : "none" }}
         className={styles.moreInfo}
