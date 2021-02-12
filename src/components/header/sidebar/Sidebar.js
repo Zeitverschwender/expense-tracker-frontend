@@ -14,6 +14,7 @@ import MonetizationOnOutlinedIcon from '@material-ui/icons/MonetizationOnOutline
 import LocalOfferOutlinedIcon from '@material-ui/icons/LocalOfferOutlined';
 import PieChartOutlinedIcon from '@material-ui/icons/PieChartOutlined';
 import { Link } from 'react-router-dom';
+import NavigationItem from './navigationItem/NavigationItem'
 
 const Sidebar = props => {
     const [isOpen, setIsOpen] = React.useState(false);
@@ -64,31 +65,27 @@ const Sidebar = props => {
                 </div>
                 <Divider />
                 <List>
-                    <ListItem button key={'Expenses'} component={Link} to="expenses" onClick = {toggleDrawer()}>
-                            <ListItemIcon><MonetizationOnOutlinedIcon color='secondary'></MonetizationOnOutlinedIcon></ListItemIcon>
-                            <ListItemText primary={'Expenses'} primaryTypographyProps={{variant:"h5"}}/>
-                    </ListItem>
-                    <ListItem button key={'Categories'} component={Link} to="categories" onClick = {toggleDrawer()}>
-                            <ListItemIcon><LocalOfferOutlinedIcon color='secondary'></LocalOfferOutlinedIcon></ListItemIcon>
-                            <ListItemText primary={'Categories'} primaryTypographyProps={{variant:"h5"}}/>
-                    </ListItem>
-                    <ListItem button key={'Graphs'} component={Link} to="graphs" onClick = {toggleDrawer()}>
-                            <ListItemIcon><PieChartOutlinedIcon color='secondary'></PieChartOutlinedIcon></ListItemIcon>
-                            <ListItemText primary={'Graphs'} primaryTypographyProps={{variant:"h5"}}/>
-                    </ListItem>
+                    <NavigationItem 
+                        toLink='expenses' action={toggleDrawer} icon={MonetizationOnOutlinedIcon}>
+                        </NavigationItem>
+                    <NavigationItem 
+                        toLink='categories' action={toggleDrawer} icon={LocalOfferOutlinedIcon}>
+                        </NavigationItem>
+                    <NavigationItem 
+                        toLink='graphs' action={toggleDrawer} icon={PieChartOutlinedIcon}>
+                        </NavigationItem>
                 </List>
                 <Divider />
             </div>
             <div>
                 <Divider />
                 <List>
+                    {/* todo auth, user section */}
                     <ListItem button key={'user-section?'}>
-                    {/* <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon> */}
-                    <ListItemText primary={'user-section?'} primaryTypographyProps={{variant:"h5"}}/>
+                        <ListItemText primary={'user-section?'} primaryTypographyProps={{variant:"h5"}}/>
                     </ListItem>
                     <ListItem button key={'login/sign-out'}>
-                    {/* <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon> */}
-                    <ListItemText primary={'login/sign-out'} primaryTypographyProps={{variant:"h5"}}/>
+                        <ListItemText primary={'login/sign-out'} primaryTypographyProps={{variant:"h5"}}/>
                     </ListItem>
                 </List>
             </div>
