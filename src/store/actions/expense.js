@@ -14,7 +14,7 @@ export const expensesAPICallFailed = (error, description) => {
     return {
         type: actionTypes.EXPENSES_API_CALL_FAILED,
         error: error, 
-        description: description
+        errorDescription: description
     };
 };
 
