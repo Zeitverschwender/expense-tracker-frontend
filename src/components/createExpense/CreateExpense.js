@@ -7,12 +7,10 @@ import {
   Radio,
   RadioGroup,
 } from "@material-ui/core";
-import { MuiPickersUtilsProvider, DateTimePicker } from "@material-ui/pickers";
 import CreditCardIcon from "@material-ui/icons/CreditCard";
 import CloseSharpIcon from "@material-ui/icons/CloseSharp";
 import ExpandMoreOutlinedIcon from "@material-ui/icons/ExpandMoreOutlined";
 import ExpandLessOutlinedIcon from "@material-ui/icons/ExpandLessOutlined";
-import DateFnsUtils from "@date-io/date-fns";
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
@@ -22,6 +20,7 @@ import PaymentMethod from "../../models/PaymentType";
 import dollar from "../../../src/assets/images/dollar.svg";
 import dollarOrange from "../../../src/assets/images/dollar_orange.svg";
 import AmountTextfield from "./formControls/amountTextfield/AmountTextfield";
+import DatePicker from "./formControls/datePicker/DatePicker";
 
 const CreateExpense = React.forwardRef((props, ref) => {
   const [date, setDate] = useState(new Date());
@@ -37,19 +36,7 @@ const CreateExpense = React.forwardRef((props, ref) => {
         style={{ display: isMoreInfoShown ? "" : "none" }}
         className={styles.moreInfo}
       >
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <DateTimePicker
-            label="When"
-            classes={{ root: styles.gap }}
-            inputVariant="outlined"
-            value={date}
-            onChange={setDate}
-            showTodayButton
-            disableFuture
-            autoOk
-            required
-          />
-        </MuiPickersUtilsProvider>
+        <DatePicker date={date} setDate={setDate} gapClassname={styles.gap} />
         <FormControl
           component="fieldset"
           required
