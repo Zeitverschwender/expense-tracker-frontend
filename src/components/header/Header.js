@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './Header.module.scss'
-import Sidebar from "../sidebar/Sidebar";
+import Sidebar from "./sidebar/Sidebar";
 
 const Header = props => {
     return (
