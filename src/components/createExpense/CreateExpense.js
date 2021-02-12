@@ -8,6 +8,7 @@ import AmountTextfield from "./formControls/amountTextfield/AmountTextfield";
 import DatePicker from "./formControls/datePicker/DatePicker";
 import PaymentMethodRadio from "./formControls/paymentMethodRadio/PaymentMethodRadio";
 import ActionsButtonGroup from "./formControls/actionsButtonGroup/ActionsButtonGroup";
+import CategorySelect from "./formControls/categorySelect/CategorySelect";
 
 const defaultPaymentMethod = PaymentMethod.CASH;
 
@@ -15,12 +16,14 @@ const CreateExpense = React.forwardRef((props, ref) => {
   const [date, setDate] = useState(new Date());
   const [amount, setAmount] = useState(0);
   const [paymentMethod, setPaymentMethod] = useState(defaultPaymentMethod);
+  const [category, setCategory] = useState("");
 
   const [isMoreInfoShown, setIsMoreInfoShown] = useState(false);
 
   return (
     <form className={styles.wrapper} autoComplete="off" ref={ref}>
       <AmountTextfield setAmount={setAmount} gapClassname={styles.gap} />
+      <CategorySelect setCategory={setCategory} gapClassname={styles.gap} />
       <div
         style={{ display: isMoreInfoShown ? "" : "none" }}
         className={styles.moreInfo}
