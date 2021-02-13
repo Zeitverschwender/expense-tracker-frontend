@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import styles from "./CreateExpense.module.scss";
 import PaymentMethod from "../../models/PaymentType";
@@ -11,6 +11,8 @@ import ActionsButtonGroup from "./formControls/actionsButtonGroup/ActionsButtonG
 import CategorySelect from "./formControls/categorySelect/CategorySelect";
 import MiniInfo from "./miniInfo/MiniInfo";
 import NoteTextfield from "./formControls/noteTextfield/NoteTextfield";
+import { useDispatch } from "react-redux";
+import { addExpense } from "../../store/actions";
 
 const defaultPaymentMethod = PaymentMethod.CASH;
 
@@ -21,7 +23,28 @@ const CreateExpense = React.forwardRef((props, ref) => {
   const [category, setCategory] = useState("");
   const [note, setNote] = useState("");
 
+  const [isValidExpense, setIsValidExpense] = useState(false);
+
   const [isMoreInfoShown, setIsMoreInfoShown] = useState(false);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    setIsValidExpense(category && amount > 0);
+  }, [amount, category]);
+
+  const createOnClick = (e) => {
+    e.preventDefault();
+    dispatch(
+      addExpense({
+        date: date.toISOString(),
+        amount,
+        paymentType: paymentMethod,
+        category: category._id, // ? hmm
+        note,
+      })
+    );
+  };
 
   return (
     <form className={styles.wrapper} autoComplete="off" ref={ref}>
@@ -48,7 +71,8 @@ const CreateExpense = React.forwardRef((props, ref) => {
         <NoteTextfield setNote={setNote} gapClassname={styles.gap} />
       </div>
       <ActionsButtonGroup
-        onCreate={() => {}}
+        onCreate={createOnClick}
+        isCreateDisabled={!isValidExpense}
         isMoreInfoShown={isMoreInfoShown}
         setIsMoreInfoShown={setIsMoreInfoShown}
         buttonGroupClassname={styles.buttonGroup}
