@@ -27,16 +27,19 @@ const Sidebar = props => {
         setIsOpen(false);
     };
 
-    const sideMenuButton = 
+    const sideMenuButton = (
+      <div className={styles.sidemenuButton}>
         <IconButton
-        color="inherit"
-        aria-label="open drawer"
-        onClick={handleDrawerOpen}
-        edge="start"
-        classes={{ root: clsx(styles.sidemenuButton, isOpen && styles.hide) }}
+          color="inherit"
+          aria-label="open drawer"
+          onClick={handleDrawerOpen}
+          edge="start"
+          classes={{ root: isOpen && styles.hide }}
         >
-            <MenuIcon fontSize='large'/>
+          <MenuIcon fontSize="large" />
         </IconButton>
+      </div>
+    );
 
     const toggleDrawer = () => (event) => {
         if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
