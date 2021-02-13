@@ -34,15 +34,13 @@ export const getAllExpenses = () => {
 };
 
 export const addExpense = ( expense ) => {
-    const success_action = {
-        type: actionTypes.ADD_EXPENSE,
-        expense: expense
-    };
-
     return dispatch => {
         axios.post( EXPENSES_ENDPOINT, expense)
             .then( response => {
-                dispatch(success_action);
+                dispatch({
+                    type: actionTypes.ADD_EXPENSE,
+                    expense: response.data.newItem,
+                });
             } )
             .catch( error => {
                 dispatch(expensesAPICallFailed(
