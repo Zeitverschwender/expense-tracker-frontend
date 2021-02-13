@@ -20,17 +20,24 @@ const reducer = ( state = initialState, action ) => {
                 ...setNoError()
             };
 
+        case actionTypes.ADD_CATEGORY:
+            return {
+                ...state,
+                categories: [action.category, ...state.categories],
+                ...setNoError()
+            };
+
         case actionTypes.REMOVE_CATEGORY:
             return {
                 ...state,
-                categories: state.categories.filter(categories => categories._id != action.categoryId),
+                categories: state.categories.filter(categories => categories._id !== action.categoryId),
                 ...setNoError()
             };
 
         case actionTypes.UPDATE_CATEGORY:
             let categories = [...state.categories];
-            const updatedIndex = categories.findIndex(cat => cat._id == action.category._id);
-            categories = [...categories.slice(0, updatedIndex), action.expense, ...categories.slice(updatedIndex + 1)];
+            const updatedIndex = categories.findIndex(cat => cat._id === action.category._id);
+            categories = [...categories.slice(0, updatedIndex), action.category, ...categories.slice(updatedIndex + 1)];
             return {
                 ...state,
                 categories: categories,
