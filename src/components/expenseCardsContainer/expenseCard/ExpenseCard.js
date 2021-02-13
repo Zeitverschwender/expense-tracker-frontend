@@ -8,11 +8,16 @@ import dollar from "../../../assets/images/dollar.svg";
 import ExpenseCardOptions from "./expenseCardOptions/ExpenseCardOptions";
 import clsx from "clsx";
 import ExpenseCardNote from "./expenseCardNote/ExpenseCardNote";
+import { removeExpense } from "../../../store/actions/expense";
+import { useDispatch } from "react-redux";
 
 const ExpenseCard = (props) => {
   const [clicked, setClicked] = useState(false);
 
   const time = DateTime.fromISO(props.expense.date).toFormat("dd/LL");
+
+  const dispatch = useDispatch();
+
   return (
     <div className={clsx(styles.card, !clicked && styles.cardHover)}>
       <div className={styles.cardContent} onClick={() => setClicked(!clicked)}>
@@ -38,9 +43,7 @@ const ExpenseCard = (props) => {
         onEditClick={() => {
           alert("edit");
         }}
-        onDeletecCick={() => {
-          alert("delete");
-        }}
+        onDeletecCick={() => dispatch(removeExpense(props.expense._id))}
         isShown={clicked}
       />
       <ExpenseCardNote note={props.expense.note} isShown={clicked} />
