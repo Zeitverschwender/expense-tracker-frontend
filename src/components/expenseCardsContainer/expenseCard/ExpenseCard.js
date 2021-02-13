@@ -8,6 +8,10 @@ import dollar from "../../../assets/images/dollar.svg";
 
 const ExpenseCard = (props) => {
   const time = DateTime.fromISO(props.expense.date).toFormat('dd/LL');
+  const colorStyle = {
+    // "background-color": `${props.expense.category.color}`,
+    backgroundColor: "#ff000055"
+  }
   return (
     <div className={styles.card}>
       <div className={styles.firstRow}>
@@ -16,7 +20,7 @@ const ExpenseCard = (props) => {
         </div>
         <div className={styles.date}>{time}</div>
       </div>
-      <div className={styles.category}>{props.expense.category ? props.expense.category.title: 'null'}</div>
+      <div style={colorStyle} className={styles.category}>{props.expense.category ? props.expense.category.title: 'null'}</div>
       <div className={styles.iconsList}>
         {props.expense.paymentType === "Cash" ? (
           <img src={dollar} alt="Cash icon" />
