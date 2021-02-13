@@ -1,0 +1,62 @@
+@import "../../../../assets/styles/colors";
+@import "../../../../assets/styles/constants";
+@import "../../../../assets/styles/mixin";
+
+@import "../ExpenseCard.module.scss";
+
+$circle-width: 8em;
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+
+  cursor: pointer;
+
+  position: relative;
+
+  &:hover .category {
+    width: $circle-width - 1.5;
+  }
+}
+.firstRow {
+  display: flex;
+}
+
+.amount {
+  font-size: 1.55rem;
+}
+
+.date {
+  margin-left: auto;
+  font-family: $font-mono;
+}
+
+.iconsList {
+  display: flex;
+  align-items: center;
+
+  @include gap(0.3, right);
+}
+.category {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+
+  transform: translateX(-50%);
+
+  height: 100%;
+  width: $circle-width;
+
+  clip-path: circle(60% at 50% 100%);
+  background: rgba($color: #a1ffaa, $alpha: 0.65);
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  font-family: $font-mono;
+  font-size: 0.93rem;
+  padding-bottom: 0.2em;
+
+  transition: width $transition-time;
+}
