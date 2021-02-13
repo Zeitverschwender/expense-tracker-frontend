@@ -26,7 +26,7 @@ export const getAllExpenses = () => {
             } )
             .catch( error => {
                 dispatch(expensesAPICallFailed(
-                    error,
+                    error.response.data,
                     "retrieving expenses failed"
                 ));
             } );
@@ -46,7 +46,7 @@ export const addExpense = ( expense ) => {
             } )
             .catch( error => {
                 dispatch(expensesAPICallFailed(
-                    error,
+                    error.response.data,
                     "adding expense failed"
                 ));
             } );
@@ -68,7 +68,7 @@ export const updateExpense = ( expense ) => {
             } )
             .catch( error => {
                 dispatch(expensesAPICallFailed(
-                    error,
+                    error.response.data,
                     `updating expense failed`
                 ));
             } );
@@ -88,7 +88,7 @@ export const removeExpense = ( expenseId ) => {
             } )
             .catch( error => {
                 dispatch(expensesAPICallFailed(
-                    error,
+                    error.response.data,
                     "removing expense failed"
                 ));
             } );
