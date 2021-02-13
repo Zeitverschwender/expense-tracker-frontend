@@ -1,24 +1,15 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { TextField } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 import { createFilterOptions } from "@material-ui/lab/Autocomplete";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllCategories } from "../../../../store/actions/index";
+import { useSelector } from "react-redux";
 
 const filter = createFilterOptions();
 function CategorySelect(props) {
   const [value, setValue] = useState("");
 
   const categories = useSelector((state) => state.categories.categories);
-  const dispatch = useDispatch();
-  const onGetAllCategories = useCallback(
-    () => dispatch(getAllCategories()),
-    []
-  );
-  useEffect(() => {
-    onGetAllCategories();
-  }, [onGetAllCategories]);
 
   const onChange = (event, newValue) => {
     if (typeof newValue === "string") {

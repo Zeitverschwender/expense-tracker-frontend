@@ -1,6 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { Fab } from "@material-ui/core";
+import { useDispatch } from "react-redux";
+import { getAllCategories } from "../../store/actions/index";
 
 import ExpenseCardsContainer from "../../components/expenseCardsContainer/ExpenseCardsContainer";
 import ExpenseListHeader from "../../components/expenseCardsContainer/expenseListHeader/ExpenseListHeader";
@@ -13,6 +15,15 @@ import CreateExpense from "../../components/createExpense/CreateExpense";
 const Home = (props) => {
   const [isCreateShown, setIsCreateShown] = useState(false);
   const createExpenseRef = useRef(null);
+
+  const dispatch = useDispatch();
+  const onGetAllCategories = useCallback(
+    () => dispatch(getAllCategories()),
+    []
+  );
+  useEffect(() => {
+    onGetAllCategories();
+  }, [onGetAllCategories]);
 
   const showCreate = (e) => {
     e.preventDefault();
