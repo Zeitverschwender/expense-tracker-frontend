@@ -6,7 +6,7 @@ function NoteTextfield(props) {
   return (
     <TextField
       id="note-textfield"
-      label="Note about the expense"
+      label="Note"
       multiline
       rows={2}
       rowsMax={8}
