@@ -19,22 +19,24 @@ const reducer = ( state = initialState, action ) => {
                 expenses: action.expenses,
                 ...setNoError()
             };
+
         case actionTypes.ADD_EXPENSE:
             return {
                 ...state,
                 expenses: [action.expense, ...state.expenses],
                 ...setNoError()
             };
+
         case actionTypes.REMOVE_EXPENSE:
             return {
                 ...state,
-                expenses: state.expenses.filter(expense => expense._id != action.expenseId),
+                expenses: state.expenses.filter(expense => expense._id !== action.expenseId),
                 ...setNoError()
             };
 
         case actionTypes.UPDATE_EXPENSES:
             let expenses = [...state.expenses];
-            const updatedIndex = expenses.findIndex(expense => expense._id == action.expense._id);
+            const updatedIndex = expenses.findIndex(expense => expense._id === action.expense._id);
             expenses = [...expenses.slice(0, updatedIndex), action.expense, ...expenses.slice(updatedIndex + 1)];
             return {
                 ...state,
