@@ -5,23 +5,30 @@
 
 $transition-time: 0.2s;
 
-$circle-width: 10em;
+$circle-width: 8em;
 
 .card {
   @extend .expenseBaseCard;
 
-  position: relative;
+  transition: transform $transition-time;
 
+  position: relative;
+}
+
+.cardContent {
   display: flex;
   flex-direction: column;
 
-  transition: transform $transition-time;
-
   cursor: pointer;
 
+  position: relative;
+
   &:hover .category {
-    width: $circle-width - 2;
+    width: $circle-width - 1.5;
   }
+}
+
+.cardHover {
   &:hover {
     transform: scale(1.03) translateY(-0.1em);
   }
@@ -57,7 +64,7 @@ $circle-width: 10em;
   height: 100%;
   width: $circle-width;
 
-  clip-path: circle(60% at 51% 100%);
+  clip-path: circle(60% at 50% 100%);
   background: rgba($color: #a1ffaa, $alpha: 0.65);
 
   display: flex;
