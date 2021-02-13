@@ -1,16 +1,14 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
-import { Fab } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { getAllCategories } from "../../store/actions/index";
 
 import ExpenseCardsContainer from "../../components/expenseCardsContainer/ExpenseCardsContainer";
 import ExpenseListHeader from "../../components/expenseCardsContainer/expenseListHeader/ExpenseListHeader";
 
-import AddIcon from "@material-ui/icons/Add";
-
 import Styles from "./Home.module.scss";
 import CreateExpense from "../../components/createExpense/CreateExpense";
+import AddExpenseFab from "../../components/addExpenseFab/AddExpenseFab";
 
 const Home = (props) => {
   const [isCreateShown, setIsCreateShown] = useState(false);
@@ -41,16 +39,7 @@ const Home = (props) => {
   };
   return (
     <React.Fragment>
-      <div className={Styles.fab}>
-        <Fab
-          color="secondary"
-          size="large"
-          aria-label="add expense"
-          onClick={showCreate}
-        >
-          <AddIcon />
-        </Fab>
-      </div>
+      <AddExpenseFab showCreate={showCreate} />
       <section className={Styles.expenseCardsContainer}>
         <ExpenseListHeader showCreate={showCreate} />
         {isCreateShown && (
