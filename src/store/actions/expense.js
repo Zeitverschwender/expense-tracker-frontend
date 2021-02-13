@@ -14,7 +14,7 @@ export const expensesAPICallFailed = (error, description) => {
     return {
         type: actionTypes.EXPENSES_API_CALL_FAILED,
         error: error, 
-        description: description
+        errorDescription: description
     };
 };
 
@@ -26,7 +26,7 @@ export const getAllExpenses = () => {
             } )
             .catch( error => {
                 dispatch(expensesAPICallFailed(
-                    error,
+                    error.response.data,
                     "retrieving expenses failed"
                 ));
             } );
@@ -34,19 +34,17 @@ export const getAllExpenses = () => {
 };
 
 export const addExpense = ( expense ) => {
-    const success_action = {
-        type: actionTypes.ADD_EXPENSE,
-        expense: expense
-    };
-
     return dispatch => {
-        axios.post( EXPENSES_ENDPOINT)
+        axios.post( EXPENSES_ENDPOINT, expense)
             .then( response => {
-                dispatch(success_action);
+                dispatch({
+                    type: actionTypes.ADD_EXPENSE,
+                    expense: response.data.newItem,
+                });
             } )
             .catch( error => {
                 dispatch(expensesAPICallFailed(
-                    error,
+                    error.response.data,
                     "adding expense failed"
                 ));
             } );
@@ -59,7 +57,7 @@ export const updateExpense = ( expense ) => {
     };
 
     return dispatch => {
-        axios.patch( EXPENSES_ENDPOINT + expense._id)
+        axios.patch( EXPENSES_ENDPOINT + expense._id, expense)
             .then( response => {
                 dispatch({
                     ...success_action,
@@ -68,7 +66,7 @@ export const updateExpense = ( expense ) => {
             } )
             .catch( error => {
                 dispatch(expensesAPICallFailed(
-                    error,
+                    error.response.data,
                     `updating expense failed`
                 ));
             } );
@@ -88,7 +86,7 @@ export const removeExpense = ( expenseId ) => {
             } )
             .catch( error => {
                 dispatch(expensesAPICallFailed(
-                    error,
+                    error.response.data,
                     "removing expense failed"
                 ));
             } );

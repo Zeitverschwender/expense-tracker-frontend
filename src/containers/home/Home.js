@@ -1,6 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { Fab } from "@material-ui/core";
+import { useDispatch } from "react-redux";
+import { getAllCategories } from "../../store/actions/index";
 
 import ExpenseCardsContainer from "../../components/expenseCardsContainer/ExpenseCardsContainer";
 import ExpenseListHeader from "../../components/expenseCardsContainer/expenseListHeader/ExpenseListHeader";
@@ -14,6 +16,15 @@ const Home = (props) => {
   const [isCreateShown, setIsCreateShown] = useState(false);
   const createExpenseRef = useRef(null);
 
+  const dispatch = useDispatch();
+  const onGetAllCategories = useCallback(
+    () => dispatch(getAllCategories()),
+    []
+  );
+  useEffect(() => {
+    onGetAllCategories();
+  }, [onGetAllCategories]);
+
   const showCreate = (e) => {
     e.preventDefault();
 
@@ -22,6 +33,11 @@ const Home = (props) => {
     if (createExpenseRef.current) {
       createExpenseRef.current.scrollIntoView({ behavior: "smooth" });
     }
+  };
+  const hideCreate = (e) => {
+    e.preventDefault();
+
+    setIsCreateShown(false);
   };
   return (
     <React.Fragment>
@@ -37,7 +53,9 @@ const Home = (props) => {
       </div>
       <section className={Styles.expenseCardsContainer}>
         <ExpenseListHeader showCreate={showCreate} />
-        {isCreateShown && <CreateExpense ref={createExpenseRef} />}
+        {isCreateShown && (
+          <CreateExpense ref={createExpenseRef} close={hideCreate} />
+        )}
         <ExpenseCardsContainer></ExpenseCardsContainer>
       </section>
     </React.Fragment>
