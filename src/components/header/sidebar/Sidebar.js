@@ -5,15 +5,12 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import MenuIcon from '@material-ui/icons/Menu';
 import { SwipeableDrawer } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
-import clsx from 'clsx'
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import MonetizationOnOutlinedIcon from '@material-ui/icons/MonetizationOnOutlined';
 import LocalOfferOutlinedIcon from '@material-ui/icons/LocalOfferOutlined';
 import PieChartOutlinedIcon from '@material-ui/icons/PieChartOutlined';
-import { Link } from 'react-router-dom';
 import NavigationItem from './navigationItem/NavigationItem'
 
 const Sidebar = props => {
