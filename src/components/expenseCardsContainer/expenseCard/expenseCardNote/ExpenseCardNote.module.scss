@@ -1,5 +1,10 @@
 @import "../../../../assets/styles/colors";
 @import "../../../../assets/styles/constants";
+@import "../../../../assets/styles/common";
+
+.noteContent {
+  padding-bottom: $expense-card-content-padding;
+}
 
 .note {
   text-align: justify;

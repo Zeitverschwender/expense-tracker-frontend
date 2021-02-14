@@ -12,7 +12,7 @@ function ExpenseCardNote(props) {
       mountOnEnter
       unmountOnExit
     >
-      <div>
+      <div className={styles.noteContent}>
         <Divider className={styles.divider} />
         {props.note ? (
           <div className={styles.note}>{props.note}</div>
