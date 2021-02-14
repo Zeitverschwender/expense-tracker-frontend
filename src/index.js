@@ -11,10 +11,12 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import categoryReducer from './store/reducers/categoryReducer'
 import expenseReducer from './store/reducers/expenseReducer'
+import userReducer from './store/reducers/userReducer'
 
 const rootReducer = combineReducers({
-  expenses: expenseReducer, 
-  categories: categoryReducer
+  expenses: expenseReducer,
+  categories: categoryReducer,
+  user: userReducer,
 })
 
 const store = createStore(rootReducer, composeWithDevTools(
