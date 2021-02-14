@@ -1,34 +1,44 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
-import styles from './ExpenseCard.module.scss'
-import { DateTime } from 'luxon'
-import CreditCardIcon from "@material-ui/icons/CreditCard";
-import SubjectSharpIcon from "@material-ui/icons/SubjectSharp";
-import dollar from "../../../assets/images/dollar.svg";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import styles from "./ExpenseCard.module.scss";
+
+import ExpenseCardOptions from "./expenseCardOptions/ExpenseCardOptions";
+import clsx from "clsx";
+import ExpenseCardNote from "./expenseCardNote/ExpenseCardNote";
+import { removeExpense } from "../../../store/actions/expense";
+import { useDispatch } from "react-redux";
+import ExpenseCardContent from "./expenseCardContent/ExpenseCardContent";
+import CreateExpense from "../../createExpense/CreateExpense";
 
 const ExpenseCard = (props) => {
-  const time = DateTime.fromISO(props.expense.date).toFormat('dd/LL');
-  const colorStyle = {
-    // "background-color": `${props.expense.category.color}`,
-    backgroundColor: "#ff000055"
-  }
-  return (
-    <div className={styles.card}>
-      <div className={styles.firstRow}>
-        <div className={styles.amount}>
-          ${props.expense.amount.toLocaleString()}
-        </div>
-        <div className={styles.date}>{time}</div>
-      </div>
-      <div style={colorStyle} className={styles.category}>{props.expense.category ? props.expense.category.title: 'null'}</div>
-      <div className={styles.iconsList}>
-        {props.expense.paymentType === "Cash" ? (
-          <img src={dollar} alt="Cash icon" />
-        ) : (
-          <CreditCardIcon />
-        )}
-        {props.expense.note && <SubjectSharpIcon />}
-      </div>
+  const [clicked, setClicked] = useState(false);
+  const [editing, setEditing] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const toggleClicked = () => {
+    setClicked(!clicked);
+  };
+
+  return editing ? (
+    <CreateExpense
+      close={() => setEditing(false)}
+      expense={props.expense}
+      afterAction={() => setEditing(false)}
+      isCreate={false}
+    />
+  ) : (
+    <div className={clsx(styles.card, !clicked && styles.cardHover)}>
+      <ExpenseCardContent
+        expense={props.expense}
+        toggleClicked={toggleClicked}
+      />
+      <ExpenseCardOptions
+        onEditClick={() => setEditing(true)}
+        onDeletecCick={() => dispatch(removeExpense(props.expense._id))}
+        isShown={clicked}
+      />
+      <ExpenseCardNote note={props.expense.note} isShown={clicked} />
     </div>
   );
 };

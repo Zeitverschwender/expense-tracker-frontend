@@ -14,11 +14,11 @@ function ActionsButtonGroup(props) {
       aria-label="create expense button group"
     >
       <Button
-        aria-label="Create"
+        aria-label={props.isCreate ? "Create" : "Edit"}
         onClick={props.onCreate}
         disabled={props.isCreateDisabled}
       >
-        Create
+        {props.isCreate ? "Create" : "Edit"}
       </Button>
       <Button
         aria-label="More Info"
@@ -43,6 +43,7 @@ ActionsButtonGroup.propTypes = {
   isMoreInfoShown: PropTypes.bool.isRequired,
   setIsMoreInfoShown: PropTypes.func.isRequired,
   buttonGroupClassname: PropTypes.string.isRequired,
+  isCreate: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
 };
 

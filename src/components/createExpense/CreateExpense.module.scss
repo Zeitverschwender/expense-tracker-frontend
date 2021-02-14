@@ -4,6 +4,8 @@
 .wrapper {
   @extend .expenseBaseCard;
 
+  padding-bottom: $expense-card-content-padding;
+
   display: flex;
   flex-direction: column;
 }
