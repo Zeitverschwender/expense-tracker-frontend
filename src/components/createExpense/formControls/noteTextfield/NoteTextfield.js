@@ -15,11 +15,13 @@ function NoteTextfield(props) {
       classes={{ root: props.gapClassname }}
       inputProps={{ maxLength: 520 }}
       onChange={(e) => props.setNote(e.target.value.trim())}
+      value={props.value}
     />
   );
 }
 
 NoteTextfield.propTypes = {
+  value: PropTypes.string.isRequired,
   setNote: PropTypes.func.isRequired,
   gapClassname: PropTypes.string.isRequired,
 };

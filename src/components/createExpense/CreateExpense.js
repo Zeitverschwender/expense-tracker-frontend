@@ -12,20 +12,24 @@ import CategorySelect from "./formControls/categorySelect/CategorySelect";
 import MiniInfo from "./miniInfo/MiniInfo";
 import NoteTextfield from "./formControls/noteTextfield/NoteTextfield";
 import { useDispatch } from "react-redux";
-import { addExpense } from "../../store/actions";
-
-const defaultPaymentMethod = PaymentMethod.CASH;
+import { addExpense, updateExpense } from "../../store/actions";
 
 const CreateExpense = React.forwardRef((props, ref) => {
-  const [date, setDate] = useState(new Date());
-  const [amount, setAmount] = useState(0);
-  const [paymentMethod, setPaymentMethod] = useState(defaultPaymentMethod);
-  const [category, setCategory] = useState("");
-  const [note, setNote] = useState("");
+  const [date, setDate] = useState(
+    props.expense.date ? new Date(props.expense.date) : new Date()
+  );
+  const [amount, setAmount] = useState(props.expense.amount || "");
+  const [paymentMethod, setPaymentMethod] = useState(
+    props.expense.paymentType || PaymentMethod.CASH
+  );
+  const [category, setCategory] = useState(props.expense.category || "");
+  const [note, setNote] = useState(props.expense.note || "");
 
   const [isValidExpense, setIsValidExpense] = useState(false);
 
-  const [isMoreInfoShown, setIsMoreInfoShown] = useState(false);
+  const [isMoreInfoShown, setIsMoreInfoShown] = useState(
+    Boolean(props.expense.note)
+  );
 
   const dispatch = useDispatch();
 
@@ -35,20 +39,28 @@ const CreateExpense = React.forwardRef((props, ref) => {
 
   const createOnClick = (e) => {
     e.preventDefault();
-    dispatch(
-      addExpense({
-        date: date.toISOString(),
-        amount,
-        paymentType: paymentMethod,
-        category: category._id, // ? hmm
-        note,
-      })
-    );
+    const newExpense = {
+      date: date.toISOString(),
+      amount,
+      paymentType: paymentMethod,
+      category: category._id, // ? hmm
+      note,
+    };
+    if (props.isCreate) {
+      dispatch(addExpense(newExpense));
+    } else {
+      dispatch(updateExpense({ ...newExpense, _id: props.expense._id }));
+    }
+    props.afterAction();
   };
 
   return (
     <form className={styles.wrapper} autoComplete="off" ref={ref}>
-      <AmountTextfield setAmount={setAmount} gapClassname={styles.gap} />
+      <AmountTextfield
+        value={amount}
+        setAmount={setAmount}
+        gapClassname={styles.gap}
+      />
       <CategorySelect setCategory={setCategory} gapClassname={styles.gap} />
       <MiniInfo
         isShown={isMoreInfoShown}
@@ -64,15 +76,19 @@ const CreateExpense = React.forwardRef((props, ref) => {
 
         <PaymentMethodRadio
           paymentMethod={paymentMethod}
-          defaultValue={defaultPaymentMethod}
           setPaymentMethod={setPaymentMethod}
           gapClassname={styles.gap}
         />
-        <NoteTextfield setNote={setNote} gapClassname={styles.gap} />
+        <NoteTextfield
+          value={note}
+          setNote={setNote}
+          gapClassname={styles.gap}
+        />
       </div>
       <ActionsButtonGroup
         onCreate={createOnClick}
         isCreateDisabled={!isValidExpense}
+        isCreate={props.isCreate}
         isMoreInfoShown={isMoreInfoShown}
         setIsMoreInfoShown={setIsMoreInfoShown}
         buttonGroupClassname={styles.buttonGroup}
@@ -83,6 +99,14 @@ const CreateExpense = React.forwardRef((props, ref) => {
 });
 CreateExpense.propTypes = {
   close: PropTypes.func.isRequired,
+  afterAction: PropTypes.func,
+  expense: PropTypes.object,
+  isCreate: PropTypes.bool,
+};
+CreateExpense.defaultProps = {
+  expense: {},
+  isCreate: true,
+  afterAction: () => {},
 };
 
 export default CreateExpense;

@@ -8,9 +8,11 @@ import ExpenseCardNote from "./expenseCardNote/ExpenseCardNote";
 import { removeExpense } from "../../../store/actions/expense";
 import { useDispatch } from "react-redux";
 import ExpenseCardContent from "./expenseCardContent/ExpenseCardContent";
+import CreateExpense from "../../createExpense/CreateExpense";
 
 const ExpenseCard = (props) => {
   const [clicked, setClicked] = useState(false);
+  const [editing, setEditing] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -18,16 +20,21 @@ const ExpenseCard = (props) => {
     setClicked(!clicked);
   };
 
-  return (
+  return editing ? (
+    <CreateExpense
+      close={() => setEditing(false)}
+      expense={props.expense}
+      afterAction={() => setEditing(false)}
+      isCreate={false}
+    />
+  ) : (
     <div className={clsx(styles.card, !clicked && styles.cardHover)}>
       <ExpenseCardContent
         expense={props.expense}
         toggleClicked={toggleClicked}
       />
       <ExpenseCardOptions
-        onEditClick={() => {
-          alert("edit");
-        }}
+        onEditClick={() => setEditing(true)}
         onDeletecCick={() => dispatch(removeExpense(props.expense._id))}
         isShown={clicked}
       />

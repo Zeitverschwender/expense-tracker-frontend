@@ -9,7 +9,7 @@ function AmountTextfield(props) {
     e.preventDefault();
     const newValue = e.target.value;
     setAmountError(!newValue || newValue <= 0);
-    props.setAmount(parseFloat(newValue));
+    props.setAmount(parseFloat(newValue) || '');
   };
   return (
     <TextField
@@ -28,11 +28,13 @@ function AmountTextfield(props) {
       autoFocus
       margin="dense"
       onChange={onAmountChange}
+      value={props.value}
     />
   );
 }
 
 AmountTextfield.propTypes = {
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   setAmount: PropTypes.func.isRequired,
   gapClassname: PropTypes.string.isRequired,
 };
