@@ -1,6 +1,7 @@
 import * as actionTypes from "../actionTypes";
 import axios from "../../axios";
 
+const AUTH_LOGOUT_ENDPOINT = "auth/logout";
 const USER_ENDPOINT = "user/";
 const USER_NAME_ENDPOINT = USER_ENDPOINT + "name";
 const USER_PHOTO_ENDPOINT = USER_ENDPOINT + "photo";
@@ -48,5 +49,19 @@ export const getUserPhoto = () => {
           )
         );
       });
+  };
+};
+export const logout = () => {
+  return (dispatch) => {
+    axios
+    .get(AUTH_LOGOUT_ENDPOINT)
+    .then((response) => {
+      dispatch({
+        type: actionTypes.LOGOUT,
+      });
+    })
+    .catch((error) => {
+      dispatch(expensesAPICallFailed(error.response.data, "logout failed"));
+    });
   };
 };

@@ -27,6 +27,13 @@ const reducer = (state = initialState, action) => {
         user: { ...state.user, photo: action.photo },
         ...setNoError(),
       };
+    case actionTypes.LOGOUT:
+      document.cookie = "isLoggedIn=; expires=Thu, 18 Dec 2013 12:00:00 UTC";
+      return {
+        ...state,
+        user: { ...state.user, isLoggedIn: false },
+        ...setNoError(),
+      };
     case actionTypes.USER_API_CALL_FAILED:
       return {
         ...state,
