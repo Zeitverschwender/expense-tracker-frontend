@@ -14,7 +14,7 @@ import PieChartOutlinedIcon from '@material-ui/icons/PieChartOutlined';
 import NavigationItem from './navigationItem/NavigationItem'
 
 const Sidebar = props => {
-    const [isOpen, setIsOpen] = React.useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
     const handleDrawerOpen = () => {
         setIsOpen(true);
@@ -48,7 +48,7 @@ const Sidebar = props => {
     return (
         <React.Fragment>
             { sideMenuButton }
-            <SwipeableDrawer 
+            <SwipeableDrawer
                 className={styles.drawer}
                 anchor="left"
                 open={isOpen}
@@ -65,13 +65,13 @@ const Sidebar = props => {
                 </div>
                 <Divider />
                 <List>
-                    <NavigationItem 
+                    <NavigationItem
                         toLink='expenses' action={toggleDrawer} icon={MonetizationOnOutlinedIcon}>
                         </NavigationItem>
-                    <NavigationItem 
+                    <NavigationItem
                         toLink='categories' action={toggleDrawer} icon={LocalOfferOutlinedIcon}>
                         </NavigationItem>
-                    <NavigationItem 
+                    <NavigationItem
                         toLink='graphs' action={toggleDrawer} icon={PieChartOutlinedIcon}>
                         </NavigationItem>
                 </List>
