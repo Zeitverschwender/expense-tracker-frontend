@@ -1,72 +1,17 @@
-@import "../../../assets/styles/colors";
-@import "../../../assets/styles/constants";
 @import "../../../assets/styles/common";
-@import "../../../assets/styles/mixin";
 
 $transition-time: 0.2s;
-
-$circle-width: 10em;
 
 .card {
   @extend .expenseBaseCard;
 
-  position: relative;
-
-  display: flex;
-  flex-direction: column;
-
   transition: transform $transition-time;
 
-  cursor: pointer;
+  position: relative;
+}
 
-  &:hover .category {
-    width: $circle-width - 2;
-  }
+.cardHover {
   &:hover {
     transform: scale(1.03) translateY(-0.1em);
   }
-}
-
-.firstRow {
-  display: flex;
-}
-
-.amount {
-  font-size: 1.55rem;
-}
-
-.date {
-  margin-left: auto;
-  font-family: $font-mono;
-}
-
-.iconsList {
-  display: flex;
-  align-items: center;
-
-  @include gap(0.3, right);
-}
-
-.category {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-
-  transform: translateX(-50%);
-
-  height: 100%;
-  width: $circle-width;
-
-  clip-path: circle(60% at 51% 100%);
-  background: rgba($color: #a1ffaa, $alpha: 0.65);
-
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-
-  font-family: $font-mono;
-  font-size: 0.93rem;
-  padding-bottom: 0.2em;
-
-  transition: width $transition-time;
 }

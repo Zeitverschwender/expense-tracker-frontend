@@ -43,7 +43,11 @@ const Home = (props) => {
       <section className={Styles.expenseCardsContainer}>
         <ExpenseListHeader showCreate={showCreate} />
         {isCreateShown && (
-          <CreateExpense ref={createExpenseRef} close={hideCreate} />
+          <CreateExpense
+            ref={createExpenseRef}
+            afterAction={() => setIsCreateShown(false)}
+            close={hideCreate}
+          />
         )}
         <ExpenseCardsContainer></ExpenseCardsContainer>
       </section>

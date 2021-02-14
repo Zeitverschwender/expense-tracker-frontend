@@ -28,7 +28,7 @@ function PaymentMethodRadio(props) {
         row
         aria-label="Payment Method"
         name="PaymentMethod"
-        defaultValue={props.defaultValue}
+        value={props.paymentMethod}
         onChange={(e) => props.setPaymentMethod(e.target.value)}
       >
         <FormControlLabel
@@ -60,7 +60,6 @@ function PaymentMethodRadio(props) {
 
 PaymentMethodRadio.propTypes = {
   paymentMethod: PropTypes.string.isRequired,
-  defaultValue: PropTypes.string.isRequired,
   setPaymentMethod: PropTypes.func.isRequired,
   gapClassname: PropTypes.string.isRequired,
 };

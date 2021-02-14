@@ -39,7 +39,7 @@ export const addExpense = ( expense ) => {
             .then( response => {
                 dispatch({
                     type: actionTypes.ADD_EXPENSE,
-                    expense: response.data.newItem,
+                    expense: response.data.newExpense,
                 });
             } )
             .catch( error => {
@@ -61,7 +61,7 @@ export const updateExpense = ( expense ) => {
             .then( response => {
                 dispatch({
                     ...success_action,
-                    expense: response.body
+                    expense: response.data.itemToUpdate
                 });
             } )
             .catch( error => {
