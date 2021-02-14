@@ -19,7 +19,7 @@ const CategoryCardsContainer = props => {
         ongetAllCategories()
     }, [ongetAllCategories])
 
-    const categoryCards = categories.map(cat => <CategoryCard key={cat._id} category={cat}></CategoryCard>)
+    const categoryCards = categories.map(cat => <CategoryCard key={cat._id} category={{...cat, note:'zoz'}}></CategoryCard>)
     const header = <div>
         <h2>Categories</h2>
         <IconButton
