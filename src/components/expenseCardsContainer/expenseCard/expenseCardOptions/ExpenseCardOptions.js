@@ -1,51 +1,24 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogTitle,
-  IconButton,
-  Zoom,
-} from "@material-ui/core";
+import { IconButton, Zoom } from "@material-ui/core";
 
 import styles from "./ExpenseCardOptions.module.scss";
 
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
+import ConfirmBox from "../../../common/confirmBox/ConfirmBox";
 
 function ExpenseCardOptions(props) {
   const [confirmBoxOpen, setConfirmBoxOpen] = useState(false);
   return (
     <div className={styles.options}>
-      <Dialog
-        open={confirmBoxOpen}
-        onClose={() => setConfirmBoxOpen(false)}
-        aria-labelledby="Delete dialog"
-        aria-describedby="Delete Expense"
-      >
-        <DialogTitle id="delete-dialog-title">
-          Are you sure you want to delete this expense?
-        </DialogTitle>
-        <DialogActions>
-          <Button
-            onClick={() => setConfirmBoxOpen(false)}
-            color="primary"
-            autoFocus
-          >
-            no
-          </Button>{" "}
-          <Button
-            onClick={() => {
-              props.onDeletecCick();
-              setConfirmBoxOpen(false);
-            }}
-            color="primary"
-          >
-            yes
-          </Button>
-        </DialogActions>
-      </Dialog>
+      <ConfirmBox
+        onYes={props.onDeletecCick}
+        operationString="delete expense"
+        msg="Are you sure you want to delete this expense?"
+        hide={() => setConfirmBoxOpen(false)}
+        isShown={confirmBoxOpen}
+      />
 
       <Zoom in={props.isShown} mountOnEnter unmountOnExit>
         <IconButton
