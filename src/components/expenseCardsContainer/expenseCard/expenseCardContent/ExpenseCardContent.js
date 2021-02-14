@@ -7,6 +7,7 @@ import SubjectSharpIcon from "@material-ui/icons/SubjectSharp";
 import dollar from "../../../../assets/images/dollar.svg";
 
 import styles from "./ExpenseCardContent.module.scss";
+import { Tooltip, Zoom } from "@material-ui/core";
 
 function ExpenseCardContent(props) {
   const time = DateTime.fromISO(props.expense.date).toFormat("dd/LL");
@@ -16,7 +17,18 @@ function ExpenseCardContent(props) {
         <div className={styles.amount}>
           ${props.expense.amount.toLocaleString()}
         </div>
-        <div className={styles.date}>{time}</div>
+        <Tooltip
+          TransitionComponent={Zoom}
+          title={DateTime.fromJSDate(
+            new Date(props.expense.date)
+          ).toLocaleString(DateTime.DATETIME_MED)}
+          interactive
+          classes={{tooltipPlacementBottom: styles.dateTooltip}}
+          arrow
+          placement="bottom-start"
+        >
+          <div className={styles.date}>{time}</div>
+        </Tooltip>
       </div>
       <div className={styles.category}>
         {props.expense.category ? props.expense.category.title : "null"}
