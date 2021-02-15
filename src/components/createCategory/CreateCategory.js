@@ -6,6 +6,7 @@ import styles from "./CreateCategory.module.scss";
 import { useDispatch } from "react-redux";
 import { addCategory, updateCategory } from "../../store/actions";
 
+import { ChromePicker } from "react-color";
 import ActionsButtonGroup from "../common/formControls/actionsButtonGroup/ActionsButtonGroup";
 import NoteTextfield from "../common/formControls/noteTextfield/NoteTextfield";
 
@@ -14,7 +15,7 @@ const CreateCategory = React.forwardRef((props, ref) => {
   const [description, setDescription] = useState(
     props.category.description || ""
   );
-  const [color, setColor] = useState(props.category.color || "");
+  const [color, setColor] = useState(props.category.color || "#f88f01");
 
   const [isValidExpense, setIsValidExpense] = useState(false);
 
@@ -33,7 +34,7 @@ const CreateCategory = React.forwardRef((props, ref) => {
     const newCategory = {
       title,
       description,
-      color,
+      color: color.hex,
     };
     if (props.isCreate) {
       dispatch(addCategory(newCategory));
@@ -45,7 +46,7 @@ const CreateCategory = React.forwardRef((props, ref) => {
 
   return (
     <form className={styles.wrapper} autoComplete="off" ref={ref}>
-      content
+      <ChromePicker color={color} onChange={(newColor) => setColor(newColor)} />
       <div
         style={{ display: isMoreInfoShown ? "" : "none" }}
         className={styles.moreInfo}
