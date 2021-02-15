@@ -2,11 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import CategoryCardsContainer from '../../components/CategoryCardsContainer/CategoryCardsContainer'
 
+import styles from './Categories.module.scss';
+
 const Categories = props => {
     return (
-        <div>
+        <section className={styles.categoriesCardsContainer}>
             <CategoryCardsContainer></CategoryCardsContainer>
-        </div>
+        </section>
     )
 }
 

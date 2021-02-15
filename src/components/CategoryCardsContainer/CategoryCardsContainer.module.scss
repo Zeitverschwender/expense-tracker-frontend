@@ -1,7 +1,5 @@
-@import "../../assets/styles/mixin";
+@import "../../assets/styles/common";
 
 .categoriesCardsList {
-  margin: 1em 2em;
-
-  @include gap(1);
+  @extend .cardsList;
 }

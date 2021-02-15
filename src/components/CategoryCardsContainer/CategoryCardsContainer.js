@@ -33,12 +33,10 @@ const CategoryCardsContainer = props => {
     </div>
 
     return (
-        <React.Fragment>
+        <div className={styles.categoriesCardsList}>
             {header}
-            <div className={styles.categoriesCardsList}>
                 {categoryCards}
-            </div>
-        </React.Fragment>
+        </div>
     )  
 }
 
