@@ -17,7 +17,7 @@ export const addCategory = ( category ) => {
             .then( response => {
                 dispatch({
                     type: actionTypes.ADD_CATEGORY,
-                    category: response.data.newItem,
+                    category: response.data.newCategory,
                 });
             } )
             .catch( error => {
@@ -60,7 +60,7 @@ export const updateCategory = ( category ) => {
             .then( response => {
                 dispatch({
                     ...success_action,
-                    category: response.body
+                    category: response.data.categoryToUpdate
                 });
             } )
             .catch( error => {
