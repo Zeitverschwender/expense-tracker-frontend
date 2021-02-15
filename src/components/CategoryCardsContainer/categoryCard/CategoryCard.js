@@ -21,7 +21,7 @@ const CategoryCard = (props) => {
       <div style={colorStyle} className={styles.title}>
         {props.category.title}
       </div>
-      {props.category.note && <SubjectSharpIcon />}
+      {props.category.description && <SubjectSharpIcon />}
     </div>
   );
 };
