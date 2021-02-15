@@ -5,6 +5,7 @@ import clsx from "clsx";
 import CardOptions from "../../common/cardOptions/CardOptions";
 import { useDispatch } from "react-redux";
 import { removeCategory } from "../../../store/actions";
+import CardNote from "../../common/cardNote/CardNote";
 
 const setTitleColor = (color) => {
   const c = color.substring(1); // strip #
@@ -18,7 +19,6 @@ const setTitleColor = (color) => {
 const CategoryCard = (props) => {
   const [clicked, setClicked] = useState(false);
 
-
   const dispatch = useDispatch();
 
   const colorStyle = {
@@ -27,19 +27,24 @@ const CategoryCard = (props) => {
   };
   return (
     <div
-      className={clsx(styles.card, !clicked ? styles.cardHover : styles.clicked)}
-      onClick={() => setClicked(!clicked)}
+      className={clsx(
+        styles.card,
+        !clicked ? styles.cardHover : styles.clicked
+      )}
     >
-      <div style={colorStyle} className={styles.title}>
-        {props.category.title}
+      <div className={styles.cardContent} onClick={() => setClicked(!clicked)}>
+        <div style={colorStyle} className={styles.title}>
+          {props.category.title}
+        </div>
+        {props.category.description && <SubjectSharpIcon />}
       </div>
-      {props.category.description && <SubjectSharpIcon />}
       <CardOptions
         cardType="category"
         onEditClick={() => alert("editing")}
         onDeletecCick={() => dispatch(removeCategory(props.category._id))}
         isShown={clicked}
       />
+      <CardNote note={props.category.description} isShown={clicked} />
     </div>
   );
 };

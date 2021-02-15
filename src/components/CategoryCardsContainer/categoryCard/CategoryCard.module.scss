@@ -2,14 +2,19 @@
 @import "../../../assets/styles/constants";
 .card {
   @extend .expenseBaseCard;
-  font-family: $font-main;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding-bottom: $expense-card-content-padding;
 
-  cursor: pointer;
   position: relative;
+}
+
+.cardContent {
+  cursor: pointer;
+  padding-bottom: $expense-card-content-padding;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .title {
