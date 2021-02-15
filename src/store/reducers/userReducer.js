@@ -1,3 +1,4 @@
+import { Router } from "react-router-dom";
 import * as actionTypes from "../actionTypes";
 
 const setNoError = () => ({
@@ -7,9 +8,9 @@ const setNoError = () => ({
 });
 
 const initialState = {
-  user: {
-    isLoggedIn: document.cookie.indexOf("isLoggedIn") !== -1,
-  },
+  isLoggedIn: document.cookie.indexOf("isLoggedIn") !== -1,
+  name: "",
+  photo: "",
   ...setNoError(),
 };
 
@@ -18,17 +19,18 @@ const reducer = (state = initialState, action) => {
     case actionTypes.SET_USER_NAME:
       return {
         ...state,
-        user: { ...state.user, username: action.username },
+        name: action.username ,
         ...setNoError(),
       };
     case actionTypes.SET_USER_PHOTO:
       return {
         ...state,
-        user: { ...state.user, photo: action.photo },
+        photo: action.photo,
         ...setNoError(),
       };
     case actionTypes.LOGOUT:
       document.cookie = "isLoggedIn=; expires=Thu, 18 Dec 2013 12:00:00 UTC";
+      window.location.reload();
       return {
         ...state,
         user: { ...state.user, isLoggedIn: false },
