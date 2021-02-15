@@ -30,10 +30,9 @@ const reducer = (state = initialState, action) => {
       };
     case actionTypes.LOGOUT:
       document.cookie = "isLoggedIn=; expires=Thu, 18 Dec 2013 12:00:00 UTC";
-      window.location.reload();
       return {
         ...state,
-        user: { ...state.user, isLoggedIn: false },
+        isLoggedIn: false,
         ...setNoError(),
       };
     case actionTypes.USER_API_CALL_FAILED:
