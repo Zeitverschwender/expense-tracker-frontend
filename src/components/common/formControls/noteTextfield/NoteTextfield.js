@@ -5,12 +5,12 @@ import { TextField } from "@material-ui/core";
 function NoteTextfield(props) {
   return (
     <TextField
-      id="note-textfield"
-      label="Note"
+      id={`${props.label}-textfield`}
+      label={`${props.label}`}
       multiline
       rows={2}
       rowsMax={8}
-      placeholder="some note..."
+      placeholder={`some ${props.label.toLowerCase()}...`}
       variant="outlined"
       classes={{ root: props.gapClassname }}
       inputProps={{ maxLength: 520 }}
@@ -21,6 +21,7 @@ function NoteTextfield(props) {
 }
 
 NoteTextfield.propTypes = {
+  label: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   setNote: PropTypes.func.isRequired,
   gapClassname: PropTypes.string.isRequired,
