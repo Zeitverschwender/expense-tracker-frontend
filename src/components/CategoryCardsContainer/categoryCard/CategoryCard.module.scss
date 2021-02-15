@@ -1,27 +1,27 @@
 @import "../../../assets/styles/common";
 @import "../../../assets/styles/constants";
-.card{
-    @extend .expenseBaseCard;
-    font-family: $font-main;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-bottom: $expense-card-content-padding;
+.card {
+  @extend .expenseBaseCard;
+  font-family: $font-main;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: $expense-card-content-padding;
 
-    cursor: pointer;
-    position: relative;
+  cursor: pointer;
+  position: relative;
 }
 
-.title{
-    padding: 0.5em 1.5em;
-    box-shadow: 10px 0px 25px 1px rgb(221, 221, 221);
-    border-radius: 3px;
-    font-weight: bold;
+.title {
+  padding: 0.5em 1.5em;
+  box-shadow: 10px 0px 25px 1px rgb(221, 221, 221);
+  border-radius: 3px;
+  font-weight: bold;
 }
 
 .clicked {
-    @extend .cardClicked;
+  @extend .cardClicked;
 }
 .cardHover {
-    @extend .cardOnHover;
+  @extend .cardOnHover;
 }
