@@ -13,11 +13,18 @@ import categoryReducer from './store/reducers/categoryReducer'
 import expenseReducer from './store/reducers/expenseReducer'
 import userReducer from './store/reducers/userReducer'
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
   expenses: expenseReducer,
   categories: categoryReducer,
   user: userReducer,
 })
+
+const rootReducer = (state, action) => {
+  if(action.type === "LOGOUT"){
+    state = undefined
+  }
+  return appReducer(state,action);
+}
 
 const store = createStore(rootReducer, composeWithDevTools(
     applyMiddleware(thunk)
