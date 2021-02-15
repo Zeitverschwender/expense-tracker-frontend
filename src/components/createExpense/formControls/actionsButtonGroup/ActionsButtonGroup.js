@@ -17,6 +17,7 @@ function ActionsButtonGroup(props) {
         aria-label={props.isCreate ? "Create" : "Edit"}
         onClick={props.onCreate}
         disabled={props.isCreateDisabled}
+        type="submit"
       >
         {props.isCreate ? "Create" : "Edit"}
       </Button>
