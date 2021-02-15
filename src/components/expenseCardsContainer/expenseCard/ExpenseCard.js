@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 import styles from "./ExpenseCard.module.scss";
 
 import clsx from "clsx";
-import ExpenseCardNote from "./expenseCardNote/ExpenseCardNote";
 import { removeExpense } from "../../../store/actions/expense";
 import { useDispatch } from "react-redux";
 import ExpenseCardContent from "./expenseCardContent/ExpenseCardContent";
 import CreateExpense from "../../createExpense/CreateExpense";
 import CardOptions from "../../common/cardOptions/CardOptions";
+import CardNote from "../../common/cardNote/CardNote";
 
 const ExpenseCard = (props) => {
   const [clicked, setClicked] = useState(false);
@@ -39,7 +39,7 @@ const ExpenseCard = (props) => {
         onDeletecCick={() => dispatch(removeExpense(props.expense._id))}
         isShown={clicked}
       />
-      <ExpenseCardNote note={props.expense.note} isShown={clicked} />
+      <CardNote note={props.expense.note} isShown={clicked} />
     </div>
   );
 };
