@@ -11,7 +11,7 @@ function ActionsButtonGroup(props) {
     <ButtonGroup
       classes={{ root: props.buttonGroupClassname }}
       color="primary"
-      aria-label="create expense button group"
+      aria-label={`create ${props.cardType} button group`}
     >
       <Button
         aria-label={props.isCreate ? "Create" : "Edit"}
@@ -39,6 +39,7 @@ function ActionsButtonGroup(props) {
 }
 
 ActionsButtonGroup.propTypes = {
+  cardType: PropTypes.string.isRequired,
   onCreate: PropTypes.func.isRequired,
   isCreateDisabled: PropTypes.bool.isRequired,
   isMoreInfoShown: PropTypes.bool.isRequired,
