@@ -9,6 +9,7 @@ import { addCategory, updateCategory } from "../../store/actions";
 import { ChromePicker } from "react-color";
 import ActionsButtonGroup from "../common/formControls/actionsButtonGroup/ActionsButtonGroup";
 import NoteTextfield from "../common/formControls/noteTextfield/NoteTextfield";
+import clsx from "clsx";
 
 const CreateCategory = React.forwardRef((props, ref) => {
   const [title, setTitle] = useState(props.category.title || "");
@@ -46,7 +47,12 @@ const CreateCategory = React.forwardRef((props, ref) => {
 
   return (
     <form className={styles.wrapper} autoComplete="off" ref={ref}>
-      <ChromePicker color={color} onChange={(newColor) => setColor(newColor)} />
+      <div className={clsx(styles.gap, styles.colorPicker)}>
+        <ChromePicker
+          color={color}
+          onChange={(newColor) => setColor(newColor)}
+        />
+      </div>
       <div
         style={{ display: isMoreInfoShown ? "" : "none" }}
         className={styles.moreInfo}
