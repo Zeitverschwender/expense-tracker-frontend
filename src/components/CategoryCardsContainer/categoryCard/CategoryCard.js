@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./CategoryCard.module.scss";
 import SubjectSharpIcon from "@material-ui/icons/SubjectSharp";
+import clsx from "clsx";
 
 const setTitleColor = (color) => {
   const c = color.substring(1); // strip #
@@ -17,7 +18,7 @@ const CategoryCard = (props) => {
         color: setTitleColor(props.category.color)
     };
   return (
-    <div className={styles.card}>
+    <div className={clsx(styles.card, styles.cardHover)}>
       <div style={colorStyle} className={styles.title}>
         {props.category.title}
       </div>

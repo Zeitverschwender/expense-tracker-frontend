@@ -7,6 +7,8 @@ $expense-card-padding: $expense-card-content-padding 0.85em 0 0.85em;
 $expense-card-shadow: 5px 7px 1em -0.45em black;
 $expense-card-border-radius: 4px;
 
+$transition-time: 0.2s;
+
 .expenseBaseCard {
   border-radius: $expense-card-border-radius;
   box-shadow: $expense-card-shadow;
@@ -49,5 +51,12 @@ $expense-card-border-radius: 4px;
   color: color(white);
   &:hover {
     color: color(accent);
+  }
+}
+
+.cardOnHover {
+  transition: transform $transition-time;
+  &:hover {
+    transform: scale(1.03) translateY(-0.1em);
   }
 }

@@ -7,6 +7,8 @@
     flex-direction: row;
     justify-content: space-between;
     padding-bottom: $expense-card-content-padding;
+
+    cursor: pointer;
 }
 
 .title{
@@ -14,4 +16,8 @@
     box-shadow: 10px 0px 25px 1px rgb(221, 221, 221);
     border-radius: 3px;
     font-weight: bold;
+}
+
+.cardHover {
+    @extend .cardOnHover;
 }
