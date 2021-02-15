@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Divider, Grow } from "@material-ui/core";
 
-import styles from "./ExpenseCardNote.module.scss";
+import styles from "./CardNote.module.scss";
 
-function ExpenseCardNote(props) {
+function CardNote(props) {
   return (
     <Grow
       in={props.isShown}
@@ -24,9 +24,9 @@ function ExpenseCardNote(props) {
   );
 }
 
-ExpenseCardNote.propTypes = {
+CardNote.propTypes = {
   note: PropTypes.string.isRequired,
   isShown: PropTypes.bool.isRequired,
 };
 
-export default ExpenseCardNote;
+export default CardNote;

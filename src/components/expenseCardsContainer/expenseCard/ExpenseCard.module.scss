@@ -1,17 +1,11 @@
 @import "../../../assets/styles/common";
 
-$transition-time: 0.2s;
-
 .card {
   @extend .expenseBaseCard;
-
-  transition: transform $transition-time;
 
   position: relative;
 }
 
 .cardHover {
-  &:hover {
-    transform: scale(1.03) translateY(-0.1em);
-  }
+  @extend .cardOnHover;
 }

@@ -30,7 +30,10 @@ function ExpenseCardContent(props) {
           <div className={styles.date}>{time}</div>
         </Tooltip>
       </div>
-      <div className={styles.category}>
+      <div
+        className={styles.category}
+        style={{ background: '#faff' }}
+      >
         {props.expense.category ? props.expense.category.title : "null"}
       </div>
       <div className={styles.iconsList}>

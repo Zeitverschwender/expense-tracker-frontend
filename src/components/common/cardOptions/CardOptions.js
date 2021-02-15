@@ -2,20 +2,20 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { IconButton, Zoom } from "@material-ui/core";
 
-import styles from "./ExpenseCardOptions.module.scss";
+import styles from "./CardOptions.module.scss";
 
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
-import ConfirmBox from "../../../common/confirmBox/ConfirmBox";
+import ConfirmBox from "../confirmBox/ConfirmBox";
 
-function ExpenseCardOptions(props) {
+function CardOptions(props) {
   const [confirmBoxOpen, setConfirmBoxOpen] = useState(false);
   return (
     <div className={styles.options}>
       <ConfirmBox
         onYes={props.onDeletecCick}
         operationString="delete expense"
-        msg="Are you sure you want to delete this expense?"
+        msg={`Are you sure you want to delete this ${props.cardType}?`}
         hide={() => setConfirmBoxOpen(false)}
         isShown={confirmBoxOpen}
       />
@@ -33,6 +33,8 @@ function ExpenseCardOptions(props) {
       <Zoom
         in={props.isShown}
         style={{ transitionDelay: props.isShown ? "150ms" : "0ms" }}
+        mountOnEnter
+        unmountOnExit
       >
         <IconButton
           aria-label="delete"
@@ -47,10 +49,11 @@ function ExpenseCardOptions(props) {
   );
 }
 
-ExpenseCardOptions.propTypes = {
+CardOptions.propTypes = {
+  cardType: PropTypes.string.isRequired,
   onEditClick: PropTypes.func.isRequired,
   onDeletecCick: PropTypes.func.isRequired,
   isShown: PropTypes.bool.isRequired,
 };
 
-export default ExpenseCardOptions;
+export default CardOptions;

@@ -1,16 +1,30 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { useState } from "react";
+import CategoryCardsContainer from "../../components/CategoryCardsContainer/CategoryCardsContainer";
+import CategoriesHeader from "../../components/CategoryCardsContainer/categoriesHeader/CategoriesHeader";
 
-const Categories = props => {
-    return (
-        <div>
-            cats
-        </div>
-    )
-}
+import styles from "./Categories.module.scss";
+import CreateCategory from "../../components/createCategory/CreateCategory";
 
-Categories.propTypes = {
+const Categories = (props) => {
+  const [isCreateShown, setIsCreateShown] = useState(false);
 
-}
+  const hideCreate = (e) => {
+    e.preventDefault();
 
-export default Categories
+    setIsCreateShown(false);
+  };
+  return (
+    <section className={styles.categoriesCardsContainer}>
+      <CategoriesHeader showCreate={() => setIsCreateShown(true)} />
+      {isCreateShown && (
+        <CreateCategory
+          afterAction={() => setIsCreateShown(false)}
+          close={hideCreate}
+        />
+      )}
+      <CategoryCardsContainer></CategoryCardsContainer>
+    </section>
+  );
+};
+
+export default Categories;

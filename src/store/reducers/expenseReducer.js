@@ -27,12 +27,14 @@ const reducer = ( state = initialState, action ) => {
                 expenses: getChronoSortedExpenses(action.expenses),
                 ...setNoError()
             };
+
         case actionTypes.ADD_EXPENSE:
             return {
                 ...state,
                 expenses: getChronoSortedExpenses([action.expense, ...state.expenses]),
                 ...setNoError()
             };
+
         case actionTypes.REMOVE_EXPENSE:
             return {
                 ...state,

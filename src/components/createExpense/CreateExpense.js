@@ -7,12 +7,12 @@ import PaymentMethod from "../../models/PaymentType";
 import AmountTextfield from "./formControls/amountTextfield/AmountTextfield";
 import DatePicker from "./formControls/datePicker/DatePicker";
 import PaymentMethodRadio from "./formControls/paymentMethodRadio/PaymentMethodRadio";
-import ActionsButtonGroup from "./formControls/actionsButtonGroup/ActionsButtonGroup";
 import CategorySelect from "./formControls/categorySelect/CategorySelect";
 import MiniInfo from "./miniInfo/MiniInfo";
-import NoteTextfield from "./formControls/noteTextfield/NoteTextfield";
 import { useDispatch } from "react-redux";
 import { addExpense, updateExpense } from "../../store/actions";
+import ActionsButtonGroup from "../common/formControls/actionsButtonGroup/ActionsButtonGroup";
+import NoteTextfield from "../common/formControls/noteTextfield/NoteTextfield";
 
 const CreateExpense = React.forwardRef((props, ref) => {
   const [date, setDate] = useState(
@@ -80,12 +80,14 @@ const CreateExpense = React.forwardRef((props, ref) => {
           gapClassname={styles.gap}
         />
         <NoteTextfield
+          label="Note"
           value={note}
           setNote={setNote}
           gapClassname={styles.gap}
         />
       </div>
       <ActionsButtonGroup
+        cardType={"expense"}
         onCreate={createOnClick}
         isCreateDisabled={!isValidExpense}
         isCreate={props.isCreate}
