@@ -3,6 +3,8 @@ import styles from "./CategoryCard.module.scss";
 import SubjectSharpIcon from "@material-ui/icons/SubjectSharp";
 import clsx from "clsx";
 import CardOptions from "../../common/cardOptions/CardOptions";
+import { useDispatch } from "react-redux";
+import { removeCategory } from "../../../store/actions";
 
 const setTitleColor = (color) => {
   const c = color.substring(1); // strip #
@@ -15,6 +17,10 @@ const setTitleColor = (color) => {
 };
 const CategoryCard = (props) => {
   const [clicked, setClicked] = useState(false);
+
+
+  const dispatch = useDispatch();
+
   const colorStyle = {
     backgroundColor: props.category.color,
     color: setTitleColor(props.category.color),
@@ -31,7 +37,7 @@ const CategoryCard = (props) => {
       <CardOptions
         cardType="category"
         onEditClick={() => alert("editing")}
-        onDeletecCick={() => alert("delete")}
+        onDeletecCick={() => dispatch(removeCategory(props.category._id))}
         isShown={clicked}
       />
     </div>
