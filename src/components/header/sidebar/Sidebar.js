@@ -12,6 +12,7 @@ import MonetizationOnOutlinedIcon from '@material-ui/icons/MonetizationOnOutline
 import LocalOfferOutlinedIcon from '@material-ui/icons/LocalOfferOutlined';
 import PieChartOutlinedIcon from '@material-ui/icons/PieChartOutlined';
 import NavigationItem from './navigationItem/NavigationItem'
+import UserSection from './userSection/UserSection'
 
 const Sidebar = props => {
     const [isOpen, setIsOpen] = useState(false);
@@ -79,15 +80,7 @@ const Sidebar = props => {
             </div>
             <div>
                 <Divider />
-                <List>
-                    {/* todo auth, user section */}
-                    <ListItem button key={'user-section?'}>
-                        <ListItemText primary={'user-section?'} primaryTypographyProps={{variant:"h5"}}/>
-                    </ListItem>
-                    <ListItem button key={'login/sign-out'}>
-                        <ListItemText primary={'login/sign-out'} primaryTypographyProps={{variant:"h5"}}/>
-                    </ListItem>
-                </List>
+                <UserSection setIsOpen={setIsOpen}/>
             </div>
 
             </SwipeableDrawer>
