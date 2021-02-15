@@ -6,6 +6,8 @@ import styles from "./CreateCategory.module.scss";
 import { useDispatch } from "react-redux";
 import { addCategory, updateCategory } from "../../store/actions";
 
+import ActionsButtonGroup from "../common/formControls/actionsButtonGroup/ActionsButtonGroup";
+
 const CreateCategory = React.forwardRef((props, ref) => {
   const [title, setTitle] = useState(props.category.title || "");
   const [description, setDescription] = useState(
@@ -43,6 +45,16 @@ const CreateCategory = React.forwardRef((props, ref) => {
   return (
     <form className={styles.wrapper} autoComplete="off" ref={ref}>
       content
+      <ActionsButtonGroup
+        cardType={"category"}
+        onCreate={createOnClick}
+        isCreateDisabled={!isValidExpense}
+        isCreate={props.isCreate}
+        isMoreInfoShown={isMoreInfoShown}
+        setIsMoreInfoShown={setIsMoreInfoShown}
+        buttonGroupClassname={styles.buttonGroup}
+        close={props.close}
+      />
     </form>
   );
 });
