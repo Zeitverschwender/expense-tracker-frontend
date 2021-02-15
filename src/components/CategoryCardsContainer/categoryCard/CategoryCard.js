@@ -6,6 +6,7 @@ import CardOptions from "../../common/cardOptions/CardOptions";
 import { useDispatch } from "react-redux";
 import { removeCategory } from "../../../store/actions";
 import CardNote from "../../common/cardNote/CardNote";
+import CreateCategory from "../../createCategory/CreateCategory";
 
 const setTitleColor = (color) => {
   const c = color.substring(1); // strip #
@@ -18,6 +19,7 @@ const setTitleColor = (color) => {
 };
 const CategoryCard = (props) => {
   const [clicked, setClicked] = useState(false);
+  const [editing, setEditing] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -25,7 +27,14 @@ const CategoryCard = (props) => {
     backgroundColor: props.category.color,
     color: setTitleColor(props.category.color),
   };
-  return (
+  return editing ? (
+    <CreateCategory
+      close={() => setEditing(false)}
+      category={props.category}
+      afterAction={() => setEditing(false)}
+      isCreate={false}
+    />
+  ) : (
     <div
       className={clsx(
         styles.card,
@@ -40,7 +49,7 @@ const CategoryCard = (props) => {
       </div>
       <CardOptions
         cardType="category"
-        onEditClick={() => alert("editing")}
+        onEditClick={() => setEditing(true)}
         onDeletecCick={() => dispatch(removeCategory(props.category._id))}
         isShown={clicked}
       />
