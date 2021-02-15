@@ -7,40 +7,45 @@ const setNoError = () => ({
 });
 
 const initialState = {
-    categories: [],
-    ...setNoError()
+  categories: {},
+  ...setNoError(),
 };
 
 const reducer = ( state = initialState, action ) => {
     switch ( action.type ) {
         case actionTypes.SET_CATEGORIES:
+            const categories = action.categories.reduce((result, current) => {
+              result[current._id] = current;
+              return result;
+            }, {});
             return {
-                ...state,
-                categories: action.categories,
-                ...setNoError()
+              ...state,
+              categories,
+              ...setNoError(),
             };
 
         case actionTypes.ADD_CATEGORY:
+            const newCategories = { ...state.categories };
+            newCategories[action.category._id] = action.category;
             return {
                 ...state,
-                categories: [action.category, ...state.categories],
-                ...setNoError()
+                categories: newCategories,
+                ...setNoError(),
             };
-
         case actionTypes.REMOVE_CATEGORY:
+            const modifiedCategories = { ...state.categories };
+            delete  modifiedCategories[action.categoryId];
             return {
                 ...state,
-                categories: state.categories.filter(categories => categories._id !== action.categoryId),
+                categories: modifiedCategories,
                 ...setNoError()
             };
-
         case actionTypes.UPDATE_CATEGORY:
-            let categories = [...state.categories];
-            const updatedIndex = categories.findIndex(cat => cat._id === action.category._id);
-            categories = [...categories.slice(0, updatedIndex), action.category, ...categories.slice(updatedIndex + 1)];
+            const updatedCategories = { ...state.categories };
+            updatedCategories[action.category._id] = action.category
             return {
                 ...state,
-                categories: categories,
+                categories: updatedCategories,
                 ...setNoError()
             };
 

@@ -7,18 +7,17 @@ import { useSelector } from "react-redux";
 
 const filter = createFilterOptions();
 function CategorySelect(props) {
-  const [value, setValue] = useState("");
-
-  const categories = useSelector((state) => state.categories.categories);
+  const categories = useSelector((state) =>
+    Object.values(state.categories.categories)
+  );
 
   const onChange = (event, newValue) => {
     if (typeof newValue === "string") {
-      setValue("");
+      props.setCategory("");
     } else if (newValue && newValue.inputValue) {
       alert("WIP, Value: " + newValue.inputValue);
     } else {
-      props.setCategory(newValue);
-      setValue(newValue);
+      props.setCategory(newValue || "");
     }
   };
   const getFilteredOptions = (options, params) => {
@@ -39,7 +38,7 @@ function CategorySelect(props) {
       renderInput={(params) => (
         <TextField {...params} label="Category" variant="outlined" />
       )}
-      value={value}
+      value={props.value}
       onChange={onChange}
       filterOptions={getFilteredOptions}
       getOptionLabel={(option) => {
@@ -56,6 +55,7 @@ function CategorySelect(props) {
 }
 
 CategorySelect.propTypes = {
+  value: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
   setCategory: PropTypes.func.isRequired,
   gapClassname: PropTypes.string.isRequired,
 };

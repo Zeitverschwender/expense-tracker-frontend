@@ -9,7 +9,7 @@ import DatePicker from "./formControls/datePicker/DatePicker";
 import PaymentMethodRadio from "./formControls/paymentMethodRadio/PaymentMethodRadio";
 import CategorySelect from "./formControls/categorySelect/CategorySelect";
 import MiniInfo from "./miniInfo/MiniInfo";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addExpense, updateExpense } from "../../store/actions";
 import ActionsButtonGroup from "../common/formControls/actionsButtonGroup/ActionsButtonGroup";
 import NoteTextfield from "../common/formControls/noteTextfield/NoteTextfield";
@@ -22,7 +22,12 @@ const CreateExpense = React.forwardRef((props, ref) => {
   const [paymentMethod, setPaymentMethod] = useState(
     props.expense.paymentType || PaymentMethod.CASH
   );
-  const [category, setCategory] = useState(props.expense.category || "");
+  const categoryFull = useSelector((state) =>
+    props.expense.category
+      ? state.categories.categories[props.expense.category]
+      : ""
+  );
+  const [category, setCategory] = useState(categoryFull);
   const [note, setNote] = useState(props.expense.note || "");
 
   const [isValidExpense, setIsValidExpense] = useState(false);
@@ -43,7 +48,7 @@ const CreateExpense = React.forwardRef((props, ref) => {
       date: date.toISOString(),
       amount,
       paymentType: paymentMethod,
-      category: category._id, // ? hmm
+      category: category._id,
       note,
     };
     if (props.isCreate) {
@@ -61,7 +66,11 @@ const CreateExpense = React.forwardRef((props, ref) => {
         setAmount={setAmount}
         gapClassname={styles.gap}
       />
-      <CategorySelect setCategory={setCategory} gapClassname={styles.gap} />
+      <CategorySelect
+        value={category}
+        setCategory={setCategory}
+        gapClassname={styles.gap}
+      />
       <MiniInfo
         isShown={isMoreInfoShown}
         date={date}

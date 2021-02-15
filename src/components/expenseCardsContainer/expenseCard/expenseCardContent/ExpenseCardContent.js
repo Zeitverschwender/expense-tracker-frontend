@@ -8,9 +8,13 @@ import dollar from "../../../../assets/images/dollar.svg";
 
 import styles from "./ExpenseCardContent.module.scss";
 import { Tooltip, Zoom } from "@material-ui/core";
+import { useSelector } from "react-redux";
 
 function ExpenseCardContent(props) {
   const time = DateTime.fromISO(props.expense.date).toFormat("dd/LL");
+  const category = useSelector(
+    (state) => state.categories.categories[props.expense.category]
+  ) || { title: "loading", color: "pink" };
   return (
     <div className={styles.cardContent} onClick={() => props.toggleClicked()}>
       <div className={styles.firstRow}>
@@ -23,18 +27,15 @@ function ExpenseCardContent(props) {
             new Date(props.expense.date)
           ).toLocaleString(DateTime.DATETIME_MED)}
           interactive
-          classes={{tooltipPlacementBottom: styles.dateTooltip}}
+          classes={{ tooltipPlacementBottom: styles.dateTooltip }}
           arrow
           placement="bottom-start"
         >
           <div className={styles.date}>{time}</div>
         </Tooltip>
       </div>
-      <div
-        className={styles.category}
-        style={{ background: '#faff' }}
-      >
-        {props.expense.category ? props.expense.category.title : "null"}
+      <div className={styles.category} style={{ background: category.color }}>
+        {category.title}
       </div>
       <div className={styles.iconsList}>
         {props.expense.paymentType === "Cash" ? (

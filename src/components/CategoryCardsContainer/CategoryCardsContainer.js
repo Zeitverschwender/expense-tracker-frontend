@@ -8,7 +8,7 @@ import styles from "./CategoryCardsContainer.module.scss";
 const CategoryCardsContainer = (props) => {
   const dispatch = useDispatch();
 
-  const categories = useSelector((state) => state.categories.categories);
+  const categories = useSelector((state) => Object.values(state.categories.categories));
   const hasError = useSelector((state) => state.categories.hasError);
   const error = useSelector((state) => state.categories.error);
   const errorDescription = useSelector(
