@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CategoryCard from "./categoryCard/CategoryCard";
 import * as actions from "../../store/actions/index";
 import styles from "./CategoryCardsContainer.module.scss";
-import CategoriesHeader from "./categoriesHeader/CategoriesHeader";
+
 
 const CategoryCardsContainer = (props) => {
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const CategoryCardsContainer = (props) => {
   ));
   return (
     <div className={styles.categoriesCardsList}>
-      <CategoriesHeader />
+      
       {categoryCards}
     </div>
   );

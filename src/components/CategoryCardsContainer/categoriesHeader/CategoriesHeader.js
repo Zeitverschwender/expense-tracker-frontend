@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { IconButton } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 
@@ -21,5 +22,9 @@ function CategoriesHeader(props) {
     </div>
   );
 }
+
+CategoriesHeader.propTypes = {
+  showCreate: PropTypes.func.isRequired,
+};
 
 export default CategoriesHeader;
