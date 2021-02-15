@@ -11,3 +11,9 @@ export {
     removeExpense,
     updateExpense
 } from './expense';
+
+export {
+    getUsername,
+    getUserPhoto,
+    logout,
+} from './user';

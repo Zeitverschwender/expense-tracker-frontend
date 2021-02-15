@@ -6,15 +6,14 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { SwipeableDrawer } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 import MonetizationOnOutlinedIcon from '@material-ui/icons/MonetizationOnOutlined';
 import LocalOfferOutlinedIcon from '@material-ui/icons/LocalOfferOutlined';
 import PieChartOutlinedIcon from '@material-ui/icons/PieChartOutlined';
 import NavigationItem from './navigationItem/NavigationItem'
+import UserSection from './userSection/UserSection'
 
 const Sidebar = props => {
-    const [isOpen, setIsOpen] = React.useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
     const handleDrawerOpen = () => {
         setIsOpen(true);
@@ -48,7 +47,7 @@ const Sidebar = props => {
     return (
         <React.Fragment>
             { sideMenuButton }
-            <SwipeableDrawer 
+            <SwipeableDrawer
                 className={styles.drawer}
                 anchor="left"
                 open={isOpen}
@@ -65,13 +64,13 @@ const Sidebar = props => {
                 </div>
                 <Divider />
                 <List>
-                    <NavigationItem 
+                    <NavigationItem
                         toLink='expenses' action={toggleDrawer} icon={MonetizationOnOutlinedIcon}>
                         </NavigationItem>
-                    <NavigationItem 
+                    <NavigationItem
                         toLink='categories' action={toggleDrawer} icon={LocalOfferOutlinedIcon}>
                         </NavigationItem>
-                    <NavigationItem 
+                    <NavigationItem
                         toLink='graphs' action={toggleDrawer} icon={PieChartOutlinedIcon}>
                         </NavigationItem>
                 </List>
@@ -79,15 +78,7 @@ const Sidebar = props => {
             </div>
             <div>
                 <Divider />
-                <List>
-                    {/* todo auth, user section */}
-                    <ListItem button key={'user-section?'}>
-                        <ListItemText primary={'user-section?'} primaryTypographyProps={{variant:"h5"}}/>
-                    </ListItem>
-                    <ListItem button key={'login/sign-out'}>
-                        <ListItemText primary={'login/sign-out'} primaryTypographyProps={{variant:"h5"}}/>
-                    </ListItem>
-                </List>
+                <UserSection setIsOpen={setIsOpen}/>
             </div>
 
             </SwipeableDrawer>
