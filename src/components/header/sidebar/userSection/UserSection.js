@@ -4,16 +4,13 @@ import styles from "./UserSection.module.scss";
 import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
 import Avatar from "@material-ui/core/Avatar";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { useDispatch, useSelector } from "react-redux";
 import { ListItemText } from "@material-ui/core";
 import { ListItemIcon } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import { BASE_URL } from "../../../../axios";
 
 const UserSection = (props) => {
-	const dispatch = useDispatch();
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(actions.getUsername());
     dispatch(actions.getUserPhoto());
@@ -39,26 +36,26 @@ const UserSection = (props) => {
         src={userPhoto}
         classes={{ root: styles.LargeAvatar }}
       />
-      <ListItem >
+      <ListItem>
         <ListItemText
           primary={userName}
-					classes={{root: styles.Center}}
+          classes={{ root: styles.Center }}
           primaryTypographyProps={{ variant: "h5" }}
         />
       </ListItem>
       <ListItem button>
-				<ListItemIcon>
-					<span className={`material-icons ${styles.LogIcon}`}>
-						{isUserLoggedIn ? "logout" : "login"}
-					</span>
-				</ListItemIcon>
-				<ListItemText
-					primary={isUserLoggedIn ? "Log Out" : "Log In"}
-					onClick={isUserLoggedIn ? logout : login}
-					primaryTypographyProps={{ variant: "h5" }}
-				/>
-     	</ListItem>
-  	</List>
+        <ListItemIcon>
+          <span className={`material-icons ${styles.LogIcon}`}>
+            {isUserLoggedIn ? "logout" : "login"}
+          </span>
+        </ListItemIcon>
+        <ListItemText
+          primary={isUserLoggedIn ? "Log Out" : "Log In"}
+          onClick={isUserLoggedIn ? logout : login}
+          primaryTypographyProps={{ variant: "h5" }}
+        />
+      </ListItem>
+    </List>
   );
 };
 
