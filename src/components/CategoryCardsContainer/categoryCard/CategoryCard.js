@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./CategoryCard.module.scss";
 import SubjectSharpIcon from "@material-ui/icons/SubjectSharp";
 import clsx from "clsx";
+import CardOptions from "../../common/cardOptions/CardOptions";
 
 const setTitleColor = (color) => {
   const c = color.substring(1); // strip #
@@ -13,16 +14,26 @@ const setTitleColor = (color) => {
     return luma < 50 ? '#eee' : '#000';
 };
 const CategoryCard = (props) => {
-    const colorStyle = {
-        backgroundColor: props.category.color,
-        color: setTitleColor(props.category.color)
-    };
+  const [clicked, setClicked] = useState(false);
+  const colorStyle = {
+    backgroundColor: props.category.color,
+    color: setTitleColor(props.category.color),
+  };
   return (
-    <div className={clsx(styles.card, styles.cardHover)}>
+    <div
+      className={clsx(styles.card, !clicked ? styles.cardHover : styles.clicked)}
+      onClick={() => setClicked(!clicked)}
+    >
       <div style={colorStyle} className={styles.title}>
         {props.category.title}
       </div>
       {props.category.description && <SubjectSharpIcon />}
+      <CardOptions
+        cardType="category"
+        onEditClick={() => alert("editing")}
+        onDeletecCick={() => alert("delete")}
+        isShown={clicked}
+      />
     </div>
   );
 };

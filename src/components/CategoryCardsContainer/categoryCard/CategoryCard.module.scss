@@ -9,6 +9,7 @@
     padding-bottom: $expense-card-content-padding;
 
     cursor: pointer;
+    position: relative;
 }
 
 .title{
@@ -18,6 +19,9 @@
     font-weight: bold;
 }
 
+.clicked {
+    @extend .cardClicked;
+}
 .cardHover {
     @extend .cardOnHover;
 }

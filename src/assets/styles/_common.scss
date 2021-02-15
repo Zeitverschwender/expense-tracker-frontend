@@ -54,9 +54,15 @@ $transition-time: 0.2s;
   }
 }
 
+$hover-effect: scale(1.03) translateY(-0.1em);
+
+.cardClicked {
+  transform: $hover-effect;
+}
+
 .cardOnHover {
   transition: transform $transition-time;
   &:hover {
-    transform: scale(1.03) translateY(-0.1em);
+    transform: $hover-effect;
   }
 }
