@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import MonetizationOnOutlinedIcon from '@material-ui/icons/MonetizationOnOutlined';
 
 const NavigationItem = props => {
     const textCapitalized = props.toLink.charAt(0).toUpperCase() + props.toLink.slice(1);
