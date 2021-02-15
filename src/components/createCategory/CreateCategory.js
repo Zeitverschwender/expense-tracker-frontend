@@ -36,7 +36,7 @@ const CreateCategory = React.forwardRef((props, ref) => {
     const newCategory = {
       title,
       description,
-      color: color.hex,
+      color: color.hex || color,
     };
     if (props.isCreate) {
       dispatch(addCategory(newCategory));
