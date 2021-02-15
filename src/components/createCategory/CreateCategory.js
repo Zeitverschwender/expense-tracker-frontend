@@ -9,6 +9,7 @@ import { addCategory, updateCategory } from "../../store/actions";
 import { ChromePicker } from "react-color";
 import ActionsButtonGroup from "../common/formControls/actionsButtonGroup/ActionsButtonGroup";
 import NoteTextfield from "../common/formControls/noteTextfield/NoteTextfield";
+import TitleTextfield from "./formControls/titleTextfield/TitleTextfield";
 import clsx from "clsx";
 
 const CreateCategory = React.forwardRef((props, ref) => {
@@ -47,6 +48,11 @@ const CreateCategory = React.forwardRef((props, ref) => {
 
   return (
     <form className={styles.wrapper} autoComplete="off" ref={ref}>
+      <TitleTextfield
+        value={title}
+        setValue={setTitle}
+        gapClassname={styles.gap}
+      />
       <div className={clsx(styles.gap, styles.colorPicker)}>
         <ChromePicker
           color={color}
