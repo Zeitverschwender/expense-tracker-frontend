@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { addCategory, updateCategory } from "../../store/actions";
 
 import ActionsButtonGroup from "../common/formControls/actionsButtonGroup/ActionsButtonGroup";
+import NoteTextfield from "../common/formControls/noteTextfield/NoteTextfield";
 
 const CreateCategory = React.forwardRef((props, ref) => {
   const [title, setTitle] = useState(props.category.title || "");
@@ -45,6 +46,17 @@ const CreateCategory = React.forwardRef((props, ref) => {
   return (
     <form className={styles.wrapper} autoComplete="off" ref={ref}>
       content
+      <div
+        style={{ display: isMoreInfoShown ? "" : "none" }}
+        className={styles.moreInfo}
+      >
+        <NoteTextfield
+          label="Description"
+          value={description}
+          setNote={setDescription}
+          gapClassname={styles.gap}
+        />
+      </div>
       <ActionsButtonGroup
         cardType={"category"}
         onCreate={createOnClick}
