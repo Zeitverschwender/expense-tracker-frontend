@@ -9,7 +9,7 @@ import dollar from "../../../../assets/images/dollar.svg";
 import styles from "./ExpenseCardContent.module.scss";
 import { Tooltip, Zoom } from "@material-ui/core";
 import { useSelector } from "react-redux";
-
+import getTitleColor from "../../../../utils/getTitleColor"
 function ExpenseCardContent(props) {
   const time = DateTime.fromISO(props.expense.date).toFormat("dd/LL");
   const category = useSelector(
@@ -34,7 +34,7 @@ function ExpenseCardContent(props) {
           <div className={styles.date}>{time}</div>
         </Tooltip>
       </div>
-      <div className={styles.category} style={{ background: category.color }}>
+      <div className={styles.category} style={{ background: category.color, color: getTitleColor(category.color)}}>
         {category.title}
       </div>
       <div className={styles.iconsList}>
