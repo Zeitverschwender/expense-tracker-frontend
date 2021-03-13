@@ -1,0 +1,15 @@
+@import "../../assets/styles/colors";
+
+.fab {
+  position: fixed !important;
+  bottom: 4em;
+  right: 1.3em;
+
+  z-index: 1;
+
+  width: 4.75em !important;
+  height: 4.75em !important;
+}
+.addIcon {
+  font-size: 2.4rem !important;
+}

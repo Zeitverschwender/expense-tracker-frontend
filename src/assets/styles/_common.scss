@@ -1,0 +1,68 @@
+@import "./colors";
+@import "./mixin";
+
+$expense-card-content-padding: 0.5em;
+
+$expense-card-padding: $expense-card-content-padding 0.85em 0 0.85em;
+$expense-card-shadow: 5px 7px 1em -0.45em black;
+$expense-card-border-radius: 4px;
+
+$transition-time: 0.2s;
+
+.expenseBaseCard {
+  border-radius: $expense-card-border-radius;
+  box-shadow: $expense-card-shadow;
+  padding: $expense-card-padding;
+  background-color: color(white);
+  color: color(black);
+}
+
+.cardsList {
+  margin: 1em 0 5em 0;
+
+  @include gap(1);
+}
+
+.cardsContainer {
+  width: 81%;
+  margin: 0 auto;
+}
+
+.listHeader {
+  margin-top: 2em;
+
+  display: flex;
+  align-items: center;
+
+  h2 {
+    font-weight: 700;
+    font-size: 2rem;
+    letter-spacing: 0.05em;
+
+    margin: 0;
+  }
+
+  .headerIcons {
+    margin-left: auto;
+  }
+}
+
+.listHeaderIcon {
+  color: color(white);
+  &:hover {
+    color: color(accent);
+  }
+}
+
+$hover-effect: scale(1.03) translateY(-0.1em);
+
+.cardClicked {
+  transform: $hover-effect;
+}
+
+.cardOnHover {
+  transition: transform $transition-time;
+  &:hover {
+    transform: $hover-effect;
+  }
+}

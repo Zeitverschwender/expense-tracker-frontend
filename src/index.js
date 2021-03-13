@@ -1,13 +1,43 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import categoryReducer from './store/reducers/categoryReducer'
+import expenseReducer from './store/reducers/expenseReducer'
+import userReducer from './store/reducers/userReducer'
+
+const appReducer = combineReducers({
+  expenses: expenseReducer,
+  categories: categoryReducer,
+  user: userReducer,
+})
+
+const rootReducer = (state, action) => {
+  if(action.type === "LOGOUT"){
+    state = undefined
+  }
+  return appReducer(state,action);
+}
+
+const store = createStore(rootReducer, composeWithDevTools(
+    applyMiddleware(thunk)
+));
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 );
 

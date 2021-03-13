@@ -1,0 +1,9 @@
+@import "../../../assets/styles/common";
+
+.categoriesHeader {
+  @extend .listHeader;
+}
+
+.icons {
+  @extend .listHeaderIcon;
+}

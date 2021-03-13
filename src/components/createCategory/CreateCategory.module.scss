@@ -1,0 +1,29 @@
+@import "../../assets/styles/colors";
+@import "../../assets/styles/common";
+
+.wrapper {
+  @extend .expenseBaseCard;
+
+  padding-bottom: $expense-card-content-padding;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.gap {
+  margin-bottom: 1em !important;
+}
+
+.moreInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonGroup {
+  align-self: flex-end;
+}
+
+.colorPicker {
+  margin-left: auto;
+  margin-right: auto;
+}

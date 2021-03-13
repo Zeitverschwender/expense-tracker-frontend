@@ -1,0 +1,23 @@
+@import "../../../assets/styles/colors";
+@import "../../../assets/styles/constants";
+@import "../../../assets/styles/common";
+
+.noteContent {
+  padding-bottom: $expense-card-content-padding;
+}
+
+.note {
+  text-align: justify;
+  white-space: pre-wrap;
+}
+
+.notePlaceHolder {
+  font-family: $font-mono;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: rgba($color: color(black), $alpha: 0.8);
+}
+
+.divider {
+  margin-bottom: 0.35em !important;
+}

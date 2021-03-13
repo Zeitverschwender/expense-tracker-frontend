@@ -1,57 +1,11 @@
-$card-margin: 10px;
+@import "../../../assets/styles/common";
 
 .card {
-    background-color: whitesmoke;
-    margin : 20px;
-    color: black;
-    display: grid;
-    grid-template-columns: repeat(20, 1fr);
-    grid-template-rows: 3fr 2fr;
-    height: 60px;
-    box-shadow: 5px 7px 1em -0.3em #666666;
+  @extend .expenseBaseCard;
+
+  position: relative;
 }
 
-.amount {
-    grid-column: 1/ 17;
-    grid-row: 1 / 2;
-    font-size: 1.5em;
-    $margin-top: card-margin;
-    margin-left: $card-margin;
-    font-family: Segoe UI, sans-serif;
-    z-index: 1;
-    color: #444546;
+.cardHover {
+  @extend .cardOnHover;
 }
-
-.date {
-    grid-row: 1 / 2;
-    grid-column: 18 / 21;
-    margin-left: auto;
-    margin-right: $card-margin;
-    margin-top: $card-margin;
-    font-size: 1.2em;
-    color: #444546;
-}
-
-.category {
-    grid-column: 2 / 21;
-    grid-row: 2 / 3;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: auto;
-    z-index: 1;
-}
-
-.details {
-    grid-column: 1 / 4;
-    grid-row: 2;
-    margin-left: $card-margin;
-}
-
-.categoryColor {
-    clip-path: ellipse(100px 60px at 50% 140%);
-    background-color: rgb(197, 197, 197);
-    z-index: 0;
-    grid-column: 2 / -1;
-    grid-row: 1 / -1;
-    margin: 0px;
-}   
